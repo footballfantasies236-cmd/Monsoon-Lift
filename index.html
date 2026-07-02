@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONSOONLIFT // FALLOUT ENERGY SYSTEM</title>
+    <style>
+        /* Extreme Retro CRT Terminal Styling */
+        :root {
+            --bg-color: #050a05;
+            --text-color: #33ff66; /* Classic CRT Phosphorus Green */
+            --text-glow: rgba(51, 255, 102, 0.65);
+            --accent-dim: #004411;
+            --border-color: #22aa44;
+            --panel-bg: #0a140a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 4px var(--text-glow);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Scanline emulation effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 99999;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 3px double var(--border-color);
+            background-color: var(--panel-bg);
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(51, 255, 102, 0.15);
+        }
+
+        /* Top Banner */
+        header {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            background-color: #020502;
+            margin-bottom: 10px;
+        }
+
+        .banner-text {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid var(--border-color);
+            background: #020502;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-right: 1px solid var(--border-color);
+        }
+
+        nav a:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            text-shadow: none;
+        }
+
+        /* Main Content */
+        main {
+            padding: 15px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        h1 { font-size: 2.5rem; text-align: center; letter-spacing: 3px; }
+        h2 { font-size: 1.6rem; border-bottom: 1px solid var(--border-color); padding-bottom: 5px; }
+        h3 { font-size: 1.2rem; margin-top: 20px; }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Blockquotes / Alerts */
+        blockquote {
+            background: #020502;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        ul li::before {
+            content: "[x] ";
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Diagrams */
+        .diagram-box {
+            background-color: #020502;
+            border: 1px dashed var(--border-color);
+            padding: 20px;
+            text-align: center;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-size: 0.85rem;
+        }
+
+        /* Imaged Layout Integration */
+        .image-container {
+            border: 1px solid var(--border-color);
+            background: #020502;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            filter: grayscale(1) sepia(1) hue-rotate(60deg) saturate(3) brightness(0.9); /* Gives images a green CRT look */
+        }
+
+        .image-caption {
+            font-size: 0.75rem;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #020502;
+        }
+
+        /* Footer */
+        footer {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            background-color: #020502;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav a { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <header>
+        <div class="banner-text">
+            <span>[ TERMINAL://MONSOONLIFT.EXE ]</span>
+            <span>[ SYS_REV: 1986.2026 ]</span>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#hero">01_HOME</a>
+        <a href="#challenge">02_CRISIS</a>
+        <a href="#mechanism">03_MECHANICS</a>
+        <a href="#specs">04_DATA_LOGS</a>
+    </nav>
+
+    <main>
+        
+        <section id="hero">
+            <h1>=== MONSOONLIFT ===</h1>
+            <p style="text-align: center; font-weight: bold;">[ TRANSFORMING MONSOON FLUID DYNAMICS INTO LOCALIZED GRID ENERGY ]</p>
+            <p style="text-align: center; font-size: 0.9rem;">OPERATOR: JUN HAO // STEAM FAIR '26 ENTRY</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Hydro Turbine Tech">
+                <div class="image-caption">FIG 01: MONSOONLIFT PROTOTYPE SPECIMEN ARTIFACT</div>
+            </div>
+
+            <blockquote>
+                WARNING: EMERGENCY POWER DEPLOYMENT CONFIGURATION ACTIVE.<br>
+                STATUS: FUEL INDEPENDENT // GRAVITY RUNTIME ENABLED.
+            </blockquote>
+        </section>
+
+        <section id="challenge">
+            <h2>[02] THE CRITICAL CRISIS</h2>
+            <p>Scenario: Total regional energy blockade. Fossil fuel pathways severed. Traditional infrastructure collapses into rolling blackouts. Diesel supply lines zeroed out.</p>
+            
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" alt="Storm Flooding">
+                <div class="image-caption">FIG 02: ENV_DATA // SOUTHEAST ASIA MONSOON INTERCEPTION ZONE</div>
+            </div>
+
+            <h3>REGIONAL VULNERABILITIES DETECTED:</h3>
+            <ul>
+                <li>Agricultural water management pumps permanently offline due to diesel deprivation.</li>
+                <li>Rural medical and residential sub-grids unpowered.</li>
+                <li>Paradox confirmed: Severe flooding occurring simultaneously with absolute power shortages.</li>
+            </ul>
+        </section>
+
+        <section id="mechanism">
+            <h2>[03] KINETIC TRANSFORMATION MECHANICS</h2>
+            <p>MonsoonLift bypasses electrochemical storage cells entirely. Energy is held within the physical field utilizing gravitational elevation metrics.</p>
+            
+            <div class="diagram-box">
+======================= ENERGY PATHWAY SYSTEM =======================
+[RAINWATER RESERVOIR] -> [ELEVATED TOWER] -> [TURBINE] -> [DC MOTOR] -> [EMERGENCY LIGHTS]
+=====================================================================
+            </div>
+
+            <div class="image-container">
+                <img src="
+                  
