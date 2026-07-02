@@ -201,6 +201,35 @@
             border-radius: 4px;
         }
 
+        /* 3D Model Component Container */
+        .model-container {
+            border: 2px dashed var(--accent-blue);
+            padding: 10px;
+            margin: 25px 0;
+            background: #1e293b;
+            border-radius: 6px;
+            position: relative;
+        }
+
+        canvas #kineticModel {
+            display: block;
+            width: 100%;
+            background: #111827;
+        }
+
+        .model-instruction {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(14, 165, 233, 0.85);
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 3px;
+            pointer-events: none;
+        }
+
         .image-container {
             border: 1px solid var(--border-color);
             padding: 12px;
@@ -247,7 +276,6 @@
             position: relative;
         }
 
-        /* Sprite Mapping via CSS Background targeting the provided file */
         .sdg-icon-wrapper .sdg-sprite {
             width: 400%;
             height: 100%;
@@ -417,14 +445,13 @@
         </div>
 
         <div id="specs" class="page">
-            <h2>[04] Structural Metrics &amp; Component Manifest</h2>
-            <p>Below is the data routing architecture mapping energy conversion stages from ambient environmental forces to practical light output:</p>
+            <h2>[04] Structural Metrics &amp; Interactive 3D Physics Prototype</h2>
+            <p>The architectural geometry below showcases the structural balance mapping the elevated tower base, fluid distribution hose, and mechanical kinetic turbine assembly:</p>
             
-            <div class="diagram-box">
-[ SOLAR HARVEST ARRAY ] ---> ( Fluid Lift Pump ) ---> [ ELEVATED FLUID RESERVOIR ]
-                                                               |
-                                                               v
-   [ EMERGENCY LED CORES ] <--- ( DC Induction Motor ) <--- [ GRAVITY DROP COLUMN ]</div>
+            <div class="model-container">
+                <canvas id="kineticModel" width="840" height="450"></canvas>
+                <div class="model-instruction">🖱️ CLICK + DRAG TO ROTATE 3D ENGINE</div>
+            </div>
 
             <h3>Materials Component Registry</h3>
             <p style="color: var(--accent-red); font-size: 0.9rem; line-height: 1.6; font-weight: bold;">
@@ -544,7 +571,213 @@
 
         const activeLink = document.querySelector(`nav a[href="#${pageId}"]`);
         if (activeLink) activeLink.classList.add('active');
+        
+        // Force redraw trigger if switching to 3D matrix panel
+        if (pageId === 'specs') { window.dispatchEvent(new Event('resize')); }
     }
+
+    // --- Interactive 3D Vector Logic Engine ---
+    const canvas = document.getElementById('kineticModel');
+    const ctx = canvas.getContext('2d');
+
+    let angleX = -0.3; // Starting structural view angle perspective matrix
+    let angleY = -0.6;
+    let wheelRotation = 0;
+    let isDragging = false;
+    let previousMouseX = 0;
+    let previousMouseY = 0;
+
+    // Geometric nodes mapping the structural tower and fluid channel base
+    const points = {
+        // Popsicle Lattice Tower Coords
+        tLB: [-120, 140, -50], tRB: [-50, 140, -50], tFB: [-50, 140, 20], tLB2: [-120, 140, 20],
+        tLT: [-120, -60, -50], tRT: [-50, -60, -50], tFT: [-50, -60, 20], tLT2: [-120, -60, 20],
+        // Mid Tower Cross Bracing Nodes
+        tLM: [-120, 40, -50], tRM: [-50, 40, -50], tFM: [-50, 40, 20], tLM2: [-120, 40, 20],
+        // Container box platform positioning coordinates
+        cFL: [10, 140, -60], cFR: [130, 140, -60], cBR: [130, 140, 60], cBL: [10, 140, 60],
+        cTL: [10, 50, -60], cTR: [130, 50, -60], cTBR: [130, 50, 60], cTBL: [10, 50, 60],
+    };
+
+    // Color definitions corresponding to the prototype image components
+    const palette = ['#ef4444', '#0ea5e9', '#10b981', '#f59e0b', '#06b6d4', '#8b5cf6'];
+
+    function transform(x, y, z) {
+        // Rotate around Y Axis matrix
+        let cosY = Math.cos(angleY), sinY = Math.sin(angleY);
+        let x1 = x * cosY - z * sinY;
+        let z1 = x * sinY + z * cosY;
+
+        // Rotate around X Axis matrix
+        let cosX = Math.cos(angleX), sinX = Math.sin(angleX);
+        let y2 = y * cosX - z1 * sinX;
+        let z2 = y * sinX + z1 * cosX;
+
+        // Orthogonal projection coordinates tracking layout center offset
+        const zoom = 1.6;
+        return {
+            x: x1 * zoom + canvas.width / 2 - 30,
+            y: y2 * zoom + canvas.height / 2 + 20,
+            depth: z2
+        };
+    }
+
+    function drawLine(p1, p2, color, width = 2) {
+        let pt1 = transform(p1[0], p1[1], p1[2]);
+        let pt2 = transform(p2[0], p2[1], p2[2]);
+        ctx.beginPath();
+        ctx.moveTo(pt1.x, pt1.y);
+        ctx.lineTo(pt2.x, pt2.y);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.stroke();
+    }
+
+    function renderLoop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 1. Draw Lower Containment Basin Framework Layout
+        drawLine(points.cFL, points.cFR, '#cbd5e1', 1);
+        drawLine(points.cFR, points.cBR, '#cbd5e1', 1);
+        drawLine(points.cBR, points.cBL, '#cbd5e1', 1);
+        drawLine(points.cBL, points.cFL, '#cbd5e1', 1);
+        drawLine(points.cTL, points.cTR, '#94a3b8', 2);
+        drawLine(points.cTR, points.cTBR, '#94a3b8', 2);
+        drawLine(points.cTBR, points.cTBL, '#94a3b8', 2);
+        drawLine(points.cTBL, points.cTL, '#94a3b8', 2);
+        drawLine(points.cFL, points.cTL, '#cbd5e1', 1);
+        drawLine(points.cFR, points.cTR, '#cbd5e1', 1);
+        drawLine(points.cBR, points.cTBR, '#cbd5e1', 1);
+        drawLine(points.cBL, points.cTBL, '#cbd5e1', 1);
+
+        // 2. Draw Structural Wooden Tower Truss Assemblies
+        const structuralEdges = [
+            ['tLB','tRB'], ['tRB','tFB'], ['tFB','tLB2'], ['tLB2','tLB'],
+            ['tLT','tRT'], ['tRT','tFT'], ['tFT','tLT2'], ['tLT2','tLT'],
+            ['tLB','tLT'], ['tRB','tRT'], ['tFB','tFT'], ['tLB2','tLT2'],
+            // Structural X-Bracing Lattice Layout
+            ['tLB','tRM'], ['tLM','tRT'], ['tRB','tFM'], ['tRM','tFT'],
+            ['tFB','tLM2'], ['tFM','tLT2'], ['tLB2','tLM'], ['tLM2','tLT']
+        ];
+        structuralEdges.forEach(edge => {
+            drawLine(points[edge[0]], points[edge[1]], '#d97706', 3); // Wooden amber profiles
+        });
+
+        // 3. Draw Top Fluid Reservoir Cylinder Shell
+        for(let h = -60; h >= -110; h -= 10) {
+            let step = 16;
+            for(let i = 0; i < step; i++) {
+                let r = 28;
+                let cx = -85, cz = -15;
+                let a1 = (i / step) * Math.PI * 2;
+                let a2 = ((i + 1) / step) * Math.PI * 2;
+                drawLine(
+                    [cx + Math.cos(a1)*r, h, cz + Math.sin(a1)*r],
+                    [cx + Math.cos(a2)*r, h, cz + Math.sin(a2)*r],
+                    'rgba(56, 189, 248, 0.5)', 2
+                );
+            }
+        }
+
+        // 4. Draw Rotating Mechanical Spoon Turbine Armature Base
+        let wheelCenterX = 70, wheelOffsetY = 85, wheelCenterZ = 0;
+        let axleLength = 40;
+        
+        // Draw main mounting stand structure inside the collection bucket
+        drawLine([70, 140, 0], [70, 85, 0], '#b45309', 4);
+        drawLine([70, 85, 0], [45, 125, 20], '#b45309', 3);
+        drawLine([70, 85, 0], [95, 125, -20], '#b45309', 3);
+        
+        // Draw main structural rotation center axle line
+        drawLine([wheelCenterX, wheelOffsetY, -axleLength/2], [wheelCenterX, wheelOffsetY, axleLength/2], '#334155', 4);
+
+        // Draw individual impeller blade spoons with mapped radial transformation values
+        let totalBlades = 6;
+        wheelRotation += 0.025; // Continuous kinetic waterwheel animation rotation speed constant
+        
+        for (let i = 0; i < totalBlades; i++) {
+            let currentAngle = wheelRotation + (i / totalBlades) * Math.PI * 2;
+            let radius = 35;
+            
+            let tipX = wheelCenterX + Math.cos(currentAngle) * radius;
+            let tipY = wheelOffsetY + Math.sin(currentAngle) * radius;
+            
+            // Draw wooden structural arm connection elements
+            drawLine([wheelCenterX, wheelOffsetY, 0], [tipX, tipY, 0], '#d97706', 3);
+            
+            // Draw colorful water containment collection cups matching your project photo configuration
+            let cupPos = transform(tipX, tipY, 0);
+            ctx.beginPath();
+            ctx.arc(cupPos.x, cupPos.y, 8, 0, Math.PI * 2);
+            ctx.fillStyle = palette[i % palette.length];
+            ctx.fill();
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        // 5. Draw Dynamic Fluid Conduit Flow Line Vector from Top Basin to Turbine Base
+        let startConduit = [-60, -70, -5];
+        let midConduit1 = [-10, -50, 20];
+        let targetDrop = [40, 50, 0];
+        
+        drawLine(startConduit, midConduit1, 'rgba(14, 165, 233, 0.6)', 4);
+        drawLine(midConduit1, targetDrop, 'rgba(14, 165, 233, 0.6)', 4);
+
+        // Kinetic cascading water fluid rendering line animation
+        let fluidOffset = (Date.now() / 200) % 1;
+        let waterX = targetDrop[0] + (30 - targetDrop[0]) * fluidOffset;
+        let waterY = targetDrop[1] + (70 - targetDrop[1]) * fluidOffset;
+        drawLine(targetDrop, [waterX, waterY, 0], '#38bdf8', 2);
+
+        requestAnimationFrame(renderLoop);
+    }
+
+    // --- User Vector Mouse Manipulation Matrix Handlers ---
+    canvas.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        previousMouseX = e.clientX;
+        previousMouseY = e.clientY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        let deltaX = e.clientX - previousMouseX;
+        let deltaY = e.clientY - previousMouseY;
+
+        angleY += deltaX * 0.01;
+        angleX += deltaY * 0.01;
+
+        previousMouseX = e.clientX;
+        previousMouseY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    
+    // Support basic mobile viewport capacitive finger swipes
+    canvas.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+            isDragging = true;
+            previousMouseX = e.touches[0].clientX;
+            previousMouseY = e.touches[0].clientY;
+        }
+    });
+
+    canvas.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches.length === 1) {
+            let deltaX = e.touches[0].clientX - previousMouseX;
+            let deltaY = e.touches[0].clientY - previousMouseY;
+            angleY += deltaX * 0.01;
+            angleX += deltaY * 0.01;
+            previousMouseX = e.touches[0].clientX;
+            previousMouseY = e.touches[0].clientY;
+        }
+    });
+
+    canvas.addEventListener('touchend', () => { isDragging = false; });
+
+    // Bootstrap internal projection environment setup matrix execution lines
+    renderLoop();
 </script>
 </body>
 </html>
