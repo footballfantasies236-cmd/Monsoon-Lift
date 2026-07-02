@@ -227,6 +227,24 @@
             font-weight: bold;
         }
 
+        /* SDG Accent Cards */
+        .sdg-badge-container {
+            margin: 15px 0;
+        }
+
+        .sdg-badge {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        .sdg-7 { background-color: #fcc30b; } /* SDG 7 Yellow */
+        .sdg-9 { background-color: #f36d25; } /* SDG 9 Orange */
+        .sdg-11 { background-color: #f99d1c; } /* SDG 11 Dark Orange */
+
         /* Clean High-Contrast Tables */
         table {
             width: 100%;
@@ -307,13 +325,23 @@
                 <li><strong>Distribution Breakdown:</strong> Total loss of grid power disabling critical water pumps and rescue beacons.</li>
             </ul>
 
-            <h3>Engineering Objectives (SDG Alignment)</h3>
-            <p>The system is strategically architected to meet rigorous off-grid deployment metrics:</p>
-            <ul>
-                <li><strong>SDG 7 (Affordable Clean Energy):</strong> Generates immediate, zero-emission electricity from gravity and water flow.</li>
-                <li><strong>SDG 9 (Industry &amp; Infrastructure):</strong> Relies completely on local, non-specialized assembly materials.</li>
-                <li><strong>SDG 11 (Sustainable Cities):</strong> Equips vulnerable urban and rural sectors with autonomous resilience tools.</li>
-            </ul>
+            <h3>Engineering Objectives &amp; UN Sustainable Development Goals (SDGs)</h3>
+            <p>The system is strategically architected to fulfill the benchmarks of the following global targets:</p>
+            
+            <div class="sdg-badge-container">
+                <div class="sdg-badge sdg-7">SDG 7: Affordable and Clean Energy</div>
+                <p style="margin-left: 15px; font-size: 0.9rem;">Provides instant, zero-emission electricity harvested locally from gravity and fluid mass streams without using carbon fuels.</p>
+            </div>
+
+            <div class="sdg-badge-container">
+                <div class="sdg-badge sdg-9">SDG 9: Industry, Innovation and Infrastructure</div>
+                <p style="margin-left: 15px; font-size: 0.9rem;">Relies on a simple, open-source mechanical assembly design utilizing ubiquitous, non-specialized supply chains.</p>
+            </div>
+
+            <div class="sdg-badge-container">
+                <div class="sdg-badge sdg-11">SDG 11: Sustainable Cities and Communities</div>
+                <p style="margin-left: 15px; font-size: 0.9rem;">Equips isolated, flood-prone neighborhoods with protective autonomous micro-grids to secure community resilience.</p>
+            </div>
         </div>
 
         <div id="mechanism" class="page">
