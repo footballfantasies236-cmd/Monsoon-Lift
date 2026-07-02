@@ -562,7 +562,14 @@
 
     // Materials Library matching the real prototype physics
     const woodMaterial = new THREE.MeshStandardMaterial({ color: 0xdfc49f, roughness: 0.8, metalness: 0.1 });
-    const plasticTranslucent = new THREE.MeshStandardMaterial({ color: 0xffffff, transparent: true, opacity: 0.35, roughness: 0.2, metalness: 0.1 });
+    const plasticTranslucent = new THREE.MeshStandardMaterial({ 
+        color: 0xffffff, 
+        transparent: true, 
+        opacity: 0.35, 
+        roughness: 0.2, 
+        metalness: 0.1,
+        side: THREE.DoubleSide
+    });
     const axleMaterial = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.5 });
 
     // 1. POPSICLE STICK SUPPORT TOWER ASSEMBLY
@@ -705,10 +712,10 @@
                 // Pulsate structural visualization hook
                 if(targetedComponent.parent && targetedComponent.parent !== masterSystemGroup && targetedComponent.parent.parent === masterSystemGroup) {
                     targetedComponent.parent.scale.set(1.08, 1.08, 1.08);
-                    setTimeout(() => targetedComponent.parent.scale.set(1, 1, 1), 250);
+                    setTimeout(() => { if (targetedComponent.parent) targetedComponent.parent.scale.set(1, 1, 1); }, 250);
                 } else {
                     targetedComponent.scale.set(1.04, 1.04, 1.04);
-                    setTimeout(() => targetedComponent.scale.set(1, 1, 1), 250);
+                    setTimeout(() => { if (targetedComponent) targetedComponent.scale.set(1, 1, 1); }, 250);
                 }
             }
         }
@@ -736,8 +743,8 @@
     function frameRenderLoop() {
         requestAnimationFrame(frameRenderLoop);
         
-        // Kinematic Waterwheel continuous prototype movement simulation
-        capGroup.rotation.x += 0.02;
+        // Kinematic Waterwheel continuous prototype movement simulation along its local frame
+        capGroup.rotation.y += 0.02;
 
         // Smooth systemic orientation idle drift
         if (!isMouseDown) {
