@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONSOONLIFT // SUPER-BRIGHT CRT RADAR SYSTEM</title>
+    <title>MONSOONLIFT // EMERGENCY RADAR SYSTEM</title>
     <style>
-        /* Ultra-Bright Neon Retro Terminal Styling */
+        /* Retro-Future High-Contrast Palette */
         :root {
-            --bg-color: #020c02;
-            --text-color: #33ff33; /* High-intensity radioactive green */
-            --text-glow: rgba(51, 255, 51, 0.9);
-            --accent-bright: #ccff33; /* Electric Lime accent */
-            --border-color: #33ff33;
-            --panel-bg: #051a05;
+            --bg-color: #030008;          /* Deep space black-purple */
+            --text-color: #ff3333;        /* Intense Cyber Red text */
+            --text-glow: rgba(255, 51, 51, 0.85);
+            --accent-orange: #ff9900;     /* Neon Orange for primary borders */
+            --accent-blue: #00ffff;       /* Electric Cyan/Blue highlights */
+            --panel-bg: #030d22;          /* Retro military blue command window */
+            --border-color: #ff9900;
         }
 
         * {
@@ -25,19 +26,19 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Courier New', Courier, monospace;
-            text-shadow: 0 0 8px var(--text-glow), 0 0 2px var(--text-glow);
+            text-shadow: 0 0 6px var(--text-glow), 0 0 1px var(--text-glow);
             line-height: 1.6;
             padding: 20px;
             font-weight: bold;
         }
 
-        /* Intense scanline and flickering overlay emulation */
+        /* Scanline and overlay CRT filter */
         body::before {
             content: " ";
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
             z-index: 99999;
             background-size: 100% 4px, 4px 100%;
             pointer-events: none;
@@ -49,16 +50,16 @@
             border: 4px solid var(--border-color);
             background-color: var(--panel-bg);
             padding: 15px;
-            box-shadow: 0 0 35px rgba(51, 255, 51, 0.3);
+            box-shadow: 0 0 30px rgba(255, 153, 0, 0.25), inset 0 0 20px rgba(0, 255, 255, 0.15);
         }
 
-        /* Top Banner */
+        /* Top Header Banner */
         header {
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--accent-blue);
             padding: 15px;
             background-color: #000;
             margin-bottom: 15px;
-            box-shadow: inset 0 0 10px var(--text-glow);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
         }
 
         .banner-text {
@@ -66,11 +67,11 @@
             justify-content: space-between;
             font-size: 1rem;
             letter-spacing: 2px;
-            color: var(--accent-bright);
-            text-shadow: 0 0 6px rgba(204, 255, 51, 0.8);
+            color: var(--accent-blue);
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
         }
 
-        /* Navigation Menu */
+        /* Menu Tabs */
         nav {
             display: flex;
             flex-wrap: wrap;
@@ -80,29 +81,29 @@
         }
 
         nav a {
-            color: var(--text-color);
+            color: var(--accent-orange);
             text-decoration: none;
             padding: 12px 24px;
             font-size: 0.95rem;
             font-weight: 900;
             border-right: 2px solid var(--border-color);
-            text-shadow: 0 0 5px var(--text-glow);
+            text-shadow: 0 0 5px rgba(255, 153, 0, 0.6);
         }
 
         nav a:hover, nav a.active {
-            background-color: var(--text-color);
+            background-color: var(--accent-orange);
             color: #000;
             text-shadow: none;
-            box-shadow: 0 0 15px var(--text-color);
+            box-shadow: 0 0 15px var(--accent-orange);
         }
 
-        /* Main Content & Page Switching */
+        /* Pages Main Area */
         main {
             padding: 10px;
         }
 
         .page {
-            display: none; /* Controlled by Javascript at the bottom */
+            display: none;
         }
 
         .page.active {
@@ -114,22 +115,25 @@
             text-transform: uppercase;
         }
 
-        h1 { font-size: 3rem; text-align: center; letter-spacing: 5px; color: var(--accent-bright); text-shadow: 0 0 10px rgba(204, 255, 51, 0.9); }
-        h2 { font-size: 1.8rem; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; margin-bottom: 20px; color: var(--accent-bright); }
-        h3 { font-size: 1.3rem; margin-top: 25px; text-decoration: underline; }
+        h1 { font-size: 3rem; text-align: center; letter-spacing: 5px; color: var(--accent-blue); text-shadow: 0 0 12px rgba(0, 255, 255, 0.9); }
+        h2 { font-size: 1.8rem; border-bottom: 2px solid var(--accent-blue); padding-bottom: 8px; margin-bottom: 20px; color: var(--accent-blue); text-shadow: 0 0 8px rgba(0, 255, 255, 0.7); }
+        h3 { font-size: 1.3rem; margin-top: 25px; color: var(--accent-orange); text-shadow: 0 0 5px rgba(255, 153, 0, 0.7); }
 
         p {
             margin-bottom: 15px;
             font-size: 1.05rem;
+            color: #e2e8f0;
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
         }
 
-        /* Code-like Blocks / Highlights */
+        /* Interface Message Blocks */
         blockquote {
             background: #000;
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--text-color);
             padding: 20px;
             margin: 25px 0;
-            box-shadow: 0 0 15px rgba(51, 255, 51, 0.2);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.3);
+            color: var(--text-color);
         }
 
         /* Lists */
@@ -139,44 +143,46 @@
         }
 
         ul li::before {
-            content: "[▶] ";
-            color: var(--accent-bright);
+            content: "[!] ";
+            color: var(--accent-blue);
         }
 
         ul li {
             margin-bottom: 10px;
             font-size: 1.05rem;
+            color: #cbd5e1;
         }
 
-        /* Flow Diagrams */
+        /* Functional Diagrams */
         .diagram-box {
             background-color: #000;
-            border: 2px dashed var(--border-color);
+            border: 2px dashed var(--accent-blue);
             padding: 20px;
             text-align: center;
             white-space: pre-wrap;
             overflow-x: auto;
             margin: 25px 0;
             font-size: 0.95rem;
-            color: var(--accent-bright);
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
         }
 
-        /* Imaged Layout Integration with Bright Overlay Filters */
+        /* Image Framing & Retro Dynamic Blueprint Filtering */
         .image-container {
             border: 2px solid var(--border-color);
             background: #000;
             padding: 12px;
             margin: 25px 0;
             text-align: center;
-            box-shadow: 0 0 20px rgba(51, 255, 51, 0.2);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.2);
         }
 
         .image-container img {
             max-width: 100%;
             height: auto;
-            border: 2px solid var(--border-color);
-            /* Gives stock photos an incredibly vibrant green radioactive filter */
-            filter: grayscale(1) sepia(1) hue-rotate(75deg) saturate(6) brightness(1.2) contrast(1.2); 
+            border: 2px solid var(--accent-blue);
+            /* Converts standard visuals into high-contrast red/blue radar feeds */
+            filter: grayscale(1) sepia(1) hue-rotate(340deg) saturate(8) contrast(1.3) brightness(0.95);
         }
 
         .image-caption {
@@ -184,10 +190,10 @@
             margin-top: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--accent-bright);
+            color: var(--accent-orange);
         }
 
-        /* Grid Data Tables */
+        /* Infrastructure Matrix Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -203,22 +209,27 @@
         }
 
         th {
-            background-color: var(--panel-bg);
-            color: var(--accent-bright);
+            background-color: #071633;
+            color: var(--accent-blue);
+            border-bottom: 2px solid var(--accent-blue);
         }
 
-        /* Footer */
+        td {
+            color: #e2e8f0;
+        }
+
+        /* System Footer */
         footer {
-            border: 2px solid var(--border-color);
+            border: 2px solid var(--accent-blue);
             padding: 20px;
             background-color: #000;
             text-align: center;
             font-size: 0.85rem;
             margin-top: 20px;
-            box-shadow: inset 0 0 10px var(--text-glow);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
         }
 
-        /* Responsive Design */
+        /* Responsive UI adjustments */
         @media (max-width: 600px) {
             nav a { width: 100%; border-right: none; border-bottom: 2px solid var(--border-color); }
             h1 { font-size: 2rem; }
@@ -231,8 +242,8 @@
     
     <header>
         <div class="banner-text">
-            <span>[ SYSTEM://MONSOONLIFT.SYS ]</span>
-            <span>[ EMER_LIGHT_ACTIVE: 100% ]</span>
+            <span>[ SYSTEM_DEPLOYMENT://MONSOONLIFT.EXE ]</span>
+            <span>[ ENERG_STAT: ACTIVE ]</span>
         </div>
     </header>
 
@@ -247,140 +258,112 @@
         
         <div id="home" class="page active">
             <h1>=== MONSOONLIFT ===</h1>
-            <p style="text-align: center; font-weight: bold; color: var(--accent-bright);">[ COGNITIVE RECONSTRUCTION OF ENERGY FROM FLOODWATERS ]</p>
-            <p style="text-align: center; font-size: 0.95rem; margin-top: 5px;">ENGINEER: JUN HAO // STEAM FAIR '26 TELEMETRY</p>
+            <p style="text-align: center; font-weight: bold; color: var(--accent-orange);">[ GRAVITATIONAL WATER STORAGE OVERRIDES IN FUEL CRISES ]</p>
+            <p style="text-align: center; font-size: 0.95rem; margin-top: 5px; color: var(--accent-blue);">OPERATOR: JUN HAO // STEAM FAIR 2026 ARCHIVE</p>
             
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Hydro Electric Micro Component">
-                <div class="image-caption">RADAR IMAGE 01: FLUID TURBINE CORE INTERFACE (PROTOTYPE MODULE)</div>
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Hydro Electric Tech Prototype Component">
+                <div class="image-caption">RADAR FEED 01: TURBINE IMPULSION HARNESS (PROTOTYPE SYSTEM ASSEMBLY)</div>
             </div>
 
             <blockquote>
-                CRITICAL DIRECTIVE: RUNTIME RUNNING INDEPENDENT OF SOLAR OUTAGES OR OIL SUPPLY FAILURES. COUPLING HIGH ELEVATION RESERVOIRS WITH GRAVITATIONAL ARCHITECTURES.
+                CRITICAL WARNING STATUS: REGIONAL RE-ROUTING COMPLETE. DESIGNED TO OVERRIDE ENTIRELY DEPENDENT FUEL SUPPLY STRATEGIES IN EMBATTLED REGIONS.
             </blockquote>
         </div>
 
         <div id="challenge" class="page">
-            <h2>[02] LOCALIZED GRID VULNERABILITIES</h2>
-            <p>Fossil transport corridors severed completely. The resulting regional blockades leave remote towns and vital farming centers dark, cold, and stripped of options.</p>
+            <h2>[02] TRANSPORT THREAT MATRIX</h2>
+            <p>Disrupted regional fuel transit lines throttle oil reliance. Diesel engines immediately halt, generating deep cascading blackout trends through rural communities.</p>
             
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" alt="Storm Rainfall and Infrastructure">
-                <div class="image-caption">RADAR IMAGE 02: STORMFONT PROFILE // TARGET COUNTRIES: MYS, IDN, THA, PHL</div>
+                <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" alt="Torrential Monsoon Rainfall Impact">
+                <div class="image-caption">RADAR FEED 02: PRECISION MONSOON MIGRATION PROFILE // HIGH WATER LEVELS ENCOUNTERED</div>
             </div>
 
-            <h3>DETECTED CONFLICT IMPACTS:</h3>
+            <h3>DETECTED FALLOUT ANOMALIES:</h3>
             <ul>
-                <li>Diesel shortages freeze traditional water pumps and critical local field infrastructure.</li>
-                <li>Grid infrastructure destabilization cuts essential lighting lines.</li>
-                <li><strong>The Opportunity Matrix:</strong> Capitalizing on intense seasonal downpours to offset resource scarcity.</li>
+                <li>High diesel overhead costs freeze agricultural processing and local water transport.</li>
+                <li>Grid infrastructure drops completely offline.</li>
+                <li><strong>The Redirection Focus:</strong> Redirecting torrential floodwaters directly into decentralized kinetic energy stores.</li>
             </ul>
         </div>
 
         <div id="mechanism" class="page">
-            <h2>[03] METRIC POWER TRANSFORMATION</h2>
-            <p>MonsoonLift isolates falling water mass as an energy accumulator block. Zero fuel usage. Zero emissions. Pure physics.</p>
+            <h2>[03] FLUID KINETIC RECONSTRUCTION</h2>
+            <p>MonsoonLift uses gravity vectors rather than dangerous or finite battery matrices to cache operational utility lines.</p>
             
             <div class="diagram-box">
-▲ HIGH ACCUMULATION: Rainwater Caught in High Reservoir Tower
-  │
-  ▼ DESCENT CORRIDOR: Pressure Routes Water Down Through Tubing
-    │
-    ⚙ TURBINE ENGAGEMENT: Kinetic Mass Spins the Generator Core
-      │
-      ⚡ UTILITY DELIVERY: High-Glow LED Terminal Powers Up
+====================== ENERGY COUPLING MAP ======================
+[ HEAVY STORMWATER ] ➔ [ HEIGHT TOWER RESERVOIR ] ➔ [ DOWNWARD TUBE RUN ] 
+                             │
+                             ▼
+                    [ TURBINE ROTATION RPM ] ➔ [ GENERATOR MOTOR ] ➔ [ LIGHTS ]
+=================================================================
             </div>
 
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=800&q=80" alt="Water Flow Fluid Infrastructure">
-                <div class="image-caption">RADAR IMAGE 03: MANIFOLD INDUCTION AND TUBING CALIBRATION</div>
+                <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=800&q=80" alt="Industrial Fluid Tubing Mechanics">
+                <div class="image-caption">RADAR FEED 03: DISCHARGE CONDUIT VALVES AND PIPE NETWORK METRICS</div>
             </div>
 
-            <h3>KINETIC CHAIN RECONSTRUCTION:</h3>
+            <h3>OPERATIONAL PIPELINE STEPS:</h3>
             <ul>
-                <li>Rainwater flows straight into an elevated, recycled storage silo.</li>
-                <li>Fluid release is triggered manually during emergency blackout windows.</li>
-                <li>A dynamic direct-current motor captures the shaft rotation, spitting out usable electrical lines.</li>
+                <li>Rain catchment groups gather localized flash downpour volumes in a elevated tank.</li>
+                <li>Gravity pulls the storage down through narrow vinyl pathways upon discharge call.</li>
+                <li>The mechanical kinetic velocity triggers the generator armature to feed the light grids.</li>
             </ul>
         </div>
 
         <div id="specs" class="page">
-            <h2>[04] GRAVITATIONAL ENERGY COMPILATIONS</h2>
-            <p>Physical telemetry verification utilizing standard weight vectors:</p>
+            <h2>[04] GRAVITATIONAL POTENTIAL LOGS</h2>
+            <p>Core Physical Math Verification Equations:</p>
             
-            <div class="diagram-box" style="font-size: 1.3rem; font-weight: 900; letter-spacing: 2px;">
+            <div class="diagram-box" style="font-size: 1.3rem; font-weight: 900; color: var(--text-color); border-color: var(--text-color); text-shadow: 0 0 8px var(--text-glow);">
    PE = m * g * h
             </div>
-            
-            <h3>CALIBRATION METRICS ARRAY</h3>
+
+            <h3>SYSTEM CALIBRATION PROFILE ARRAYS</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>HEAD TOWER HEIGHT (h)</th>
-                        <th>TURBINE SPEED RATIO</th>
-                        <th>EMERGENCY LUMEN GLOW STATUS</th>
+                        <th>STORAGE HEAD RANGE (h)</th>
+                        <th>TURBINE VELOCITY LOG</th>
+                        <th>LED TERMINAL LEVEL STATUS</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>10 CM CAP</td>
-                        <td>LOW SPEED RPM</td>
-                        <td>LOW GLOW INDICATION</td>
+                        <td>10 CM INDEX</td>
+                        <td>LOW VELOCITY RPM</td>
+                        <td>LOW GLOW PROTOCOL ONLY</td>
                     </tr>
                     <tr>
-                        <td>20 CM CAP</td>
-                        <td>MID SPEED RPM</td>
-                        <td>STANDARD RUNTIME ENGAGED</td>
+                        <td>20 CM INDEX</td>
+                        <td>MID VELOCITY RPM</td>
+                        <td>STANDARD GRID INTERFACE ACTIVATED</td>
                     </tr>
                     <tr>
-                        <td>30 CM CAP</td>
-                        <td>HIGH SPEED RPM</td>
-                        <td style="color: var(--accent-bright);">MAXIMUM ILLUMINATION OUTPUT</td>
+                        <td>30 CM INDEX</td>
+                        <td>HIGH VELOCITY RPM</td>
+                        <td style="color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue);">MAXIMUM LOGGED LUMEN OUTPUT</td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1517055729445-2b1a20bf7b1b?auto=format&fit=crop&w=800&q=80" alt="DC Motor and LEDs Assembly">
-                <div class="image-caption">RADAR IMAGE 04: DC MOTOR VOLTAGE SENSOR BENCH ANALYSIS</div>
+                <img src="https://images.unsplash.com/photo-1517055729445-2b1a20bf7b1b?auto=format&fit=crop&w=800&q=80" alt="Electronic Diagnostics Lab Testing">
+                <div class="image-caption">RADAR FEED 04: DC CURRENT VOLTAGE MONITORING ARRAY LOAD ANALYSIS</div>
             </div>
         </div>
 
     </main>
 
     <footer>
-        <p>*** SCREEN OUTPUT SATURATED // TRANSCRIPT RESTING ***</p>
-        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--accent-bright);">MONSOONLIFT INFRASTRUCTURE DATABASE © 2026</p>
+        <p>*** CODES LOCKED // TRANSMISSION LOOP TERMINATED ***</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--accent-blue);">MONSOONLIFT CODES ARCHIVE // PROJECT YEAR 2026</p>
     </footer>
 
 </div>
 
 <script>
-    function switchPage(pageId) {
-        // Hide all pages
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(page => page.classList.remove('active'));
-        
-        // Remove active look from all tab links
-        const links = document.querySelectorAll('.tab-link');
-        links.forEach(link => link.classList.remove('active'));
-        
-        // Show selected page
-        document.getElementById(pageId).classList.add('active');
-        
-        // Match active styling to clicked tab link
-        const activeLink = document.querySelector(`a[href="#${pageId}"]`);
-        if(activeLink) activeLink.classList.add('active');
-    }
-
-    // Set initial layout hash reading functionality if reloaded
-    window.addEventListener('DOMContentLoaded', () => {
-        const hash = window.location.hash.substring(1);
-        if (hash && document.getElementById(hash)) {
-            switchPage(hash);
-        }
-    });
-</script>
-
-</body>
-</html>
+    function switchPage
