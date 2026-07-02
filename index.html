@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONSOONLIFT // Emergency Radar System</title>
     <style>
-        /* Technical Console Palette */
+        /* Light Tech Workspace Palette */
         :root {
-            --bg-color: #0b0d11;          /* Clean, dark console background */
-            --text-color: #e2e8f0;        /* Light slate for high readability */
+            --bg-color: #f0f4f8;          /* Bright, crisp light slate background */
+            --text-color: #1e293b;        /* Dark slate text for maximum contrast */
             
-            /* Clean Retro Accents */
-            --accent-red: #f87171;         /* Light Red */
-            --accent-orange: #fb923c;      /* Light Orange */
-            --accent-blue: #38bdf8;        /* Light Blue */
+            /* High-Contrast Light Neon Accents */
+            --accent-red: #ef4444;         /* Vivid Light Red */
+            --accent-orange: #f97316;      /* Vivid Light Orange */
+            --accent-blue: #0ea5e9;        /* Vivid Light Blue */
             
-            --panel-bg: #11151d;
-            --border-color: #1e293b;
-            --text-muted: #64748b;
+            --panel-bg: #ffffff;          /* Clean white content panel */
+            --border-color: #cbd5e1;       /* Light gray panel borders */
+            --text-muted: #64748b;        /* Soft gray for secondary metadata */
         }
 
         * {
@@ -39,37 +39,43 @@
             margin: 0 auto;
             border: 1px solid var(--border-color);
             background-color: var(--panel-bg);
-            padding: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(148, 163, 184, 0.15); /* Elegant, soft shadow to make it pop */
+            border-radius: 4px;
         }
 
         header {
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--accent-orange);
             padding-bottom: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .banner-text {
             display: flex;
             justify-content: space-between;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: bold;
             letter-spacing: 1px;
             color: var(--text-muted);
         }
 
-        /* Structured Navigation Tabs */
+        /* High-Contrast Navigation Bar */
         nav {
             display: flex;
             flex-wrap: wrap;
             border: 1px solid var(--border-color);
-            margin-bottom: 25px;
-            background-color: #0d1017;
+            margin-bottom: 30px;
+            background-color: #f8fafc;
+            border-radius: 4px;
+            overflow: hidden;
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            padding: 12px;
+            padding: 14px;
             font-size: 0.85rem;
+            font-weight: bold;
             border-right: 1px solid var(--border-color);
             flex-grow: 1;
             text-align: center;
@@ -79,13 +85,13 @@
 
         nav a:hover {
             color: var(--text-color);
-            background-color: #161b22;
+            background-color: #e2e8f0;
         }
 
         nav a.active {
             background-color: var(--accent-blue);
-            color: #0b0d11;
-            font-weight: bold;
+            color: #ffffff;
+            border-bottom: none;
         }
 
         nav a:last-child {
@@ -110,21 +116,23 @@
         }
 
         h1 { 
-            font-size: 1.8rem; 
+            font-size: 2rem; 
             text-align: center; 
             letter-spacing: 1px; 
             color: var(--accent-red);
             padding: 10px 0;
+            border-bottom: 1px double var(--border-color);
+            margin-bottom: 25px;
         }
         h2 { 
-            font-size: 1.3rem; 
+            font-size: 1.4rem; 
             padding-bottom: 6px; 
             margin-bottom: 20px; 
             color: var(--accent-orange); 
-            border-bottom: 1px dashed var(--border-color);
+            border-bottom: 2px solid #f1f5f9;
         }
         h3 { 
-            font-size: 1.05rem; 
+            font-size: 1.1rem; 
             margin-top: 25px; 
             color: var(--accent-blue); 
         }
@@ -132,15 +140,16 @@
         p {
             margin-bottom: 15px;
             font-size: 0.95rem;
-            color: #cbd5e1;
+            color: #334155;
         }
 
-        /* Engineering Data Callout Block */
+        /* Bold Callout Block */
         blockquote {
-            border-left: 3px solid var(--accent-red);
-            padding: 12px 15px;
-            margin: 20px 0;
-            background: #161b22;
+            border-left: 4px solid var(--accent-red);
+            padding: 15px;
+            margin: 25px 0;
+            background: #fff5f5; /* Light red tint to make it jump out */
+            border-radius: 0 4px 4px 0;
         }
 
         ul, ol {
@@ -155,44 +164,51 @@
         }
 
         ul li::before {
-            content: "• ";
+            content: "■ ";
             color: var(--accent-blue);
-            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 5px;
         }
 
         ol li {
             margin-left: 20px;
             margin-bottom: 8px;
             font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .danger-list li::before {
             content: "[!] ";
             color: var(--accent-red);
+            font-weight: bold;
         }
         
         .danger-list span {
             color: var(--accent-orange);
+            font-weight: bold;
         }
 
-        /* Code/Data Blocks */
+        /* Clean Technical Boxes */
         .diagram-box {
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--accent-blue);
             padding: 15px;
             text-align: left;
             white-space: pre-wrap;
             overflow-x: auto;
-            margin: 20px 0;
+            margin: 25px 0;
             font-size: 0.85rem;
-            background: #0d1017;
-            color: #94a3b8;
+            background: #f0f9ff; /* Light clean blue tint */
+            color: #0369a1;
+            font-weight: bold;
+            border-radius: 4px;
         }
 
         .image-container {
             border: 1px solid var(--border-color);
-            padding: 10px;
-            margin: 20px 0;
-            background: #0d1017;
+            padding: 12px;
+            margin: 25px 0;
+            background: #f8fafc;
+            border-radius: 4px;
         }
 
         .image-container img {
@@ -200,22 +216,24 @@
             height: auto;
             display: block;
             margin: 0 auto;
-            opacity: 0.8;
+            border: 1px solid var(--border-color);
         }
 
         .image-caption {
             font-size: 0.8rem;
-            margin-top: 10px;
+            margin-top: 12px;
             text-align: center;
             color: var(--text-muted);
+            font-weight: bold;
         }
 
-        /* Clean Technical Tables */
+        /* Clean High-Contrast Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
             font-size: 0.9rem;
+            background: #ffffff;
         }
 
         th, td {
@@ -225,23 +243,25 @@
         }
 
         th {
-            background-color: #161b22;
-            color: var(--accent-blue);
+            background-color: #f1f5f9;
+            color: var(--text-color);
             font-weight: bold;
+            border-bottom: 2px solid var(--border-color);
         }
 
         footer {
             border-top: 1px solid var(--border-color);
-            padding-top: 15px;
+            padding-top: 20px;
             text-align: center;
             font-size: 0.8rem;
-            margin-top: 30px;
+            margin-top: 40px;
             color: var(--text-muted);
+            font-weight: bold;
         }
 
         @media (max-width: 600px) {
             nav a { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
-            h1 { font-size: 1.4rem; }
+            h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -268,7 +288,7 @@
     <main>
         <div id="home" class="page active">
             <h1>MONSOONLIFT Project Brief</h1>
-            <p style="text-align: center; color: var(--accent-orange);">Micro-Scale Gravitational Fluid Energetics for Disaster Relief</p>
+            <p style="text-align: center; color: var(--accent-orange); font-weight: bold;">Micro-Scale Gravitational Fluid Energetics for Disaster Relief</p>
             
             <blockquote>
                 <strong style="color: var(--accent-red);">Central Research Objective:</strong><br>
@@ -331,7 +351,7 @@
    [ EMERGENCY LED CORES ] <--- ( DC Induction Motor ) <--- [ GRAVITY DROP COLUMN ]</div>
 
             <h3>Materials Component Registry</h3>
-            <p style="color: var(--accent-red); font-size: 0.9rem; line-height: 1.6;">
+            <p style="color: var(--accent-red); font-size: 0.9rem; line-height: 1.6; font-weight: bold;">
                 01. Optimized Photovoltaic Harvest Panel // 02. Submersible Intake & Fluid Extraction Unit // 03. High-Volume Cylindrical Retention Containers // 04. Reinforced Vinyl Feed Couplings // 05. High-Revolution Brushed DC Induction Component // 06. Low-Draw Emergency Illumination LEDs // 07. Recyclable Plywood Resilience Frame Shells // 08. Geometric Stabilizing Reinforcements
             </p>
         </div>
@@ -341,7 +361,7 @@
             
             <h3>Theoretical Hydro-Potential Model</h3>
             <p>System capacity and energy output are calculated using standard fluid mechanics principles:</p>
-            <div class="diagram-box" style="text-align: center; font-size: 1.1rem; color: var(--accent-orange);">
+            <div class="diagram-box" style="text-align: center; font-size: 1.2rem; color: var(--accent-orange); background: #fffbf7; border-color: var(--accent-orange);">
    P = η · ρ · g · Q · Δh
             </div>
 
@@ -380,7 +400,7 @@
                     <tr><td>High-RPM DC Generator Armature</td><td>RM  5.00</td><td>1 Unit</td></tr>
                     <tr><td>High-Efficiency LED Array Block</td><td>RM  1.00</td><td>1 Unit</td></tr>
                     <tr><td>Structural Core Casing & Mounts</td><td>RM  0.00</td><td>Variable</td></tr>
-                    <tr style="color: var(--accent-orange); background: #161b22;">
+                    <tr style="color: var(--accent-orange); background: #fffbf7; font-weight: bold;">
                         <td><strong>Gross Bill of Materials Cost</strong></td>
                         <td colspan="2"><strong>RM 27.00 Total</strong></td>
                     </tr>
