@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONSOONLIFT // EMERGENCY RADAR SYSTEM</title>
+    <title>MONSOONLIFT // Emergency Radar System</title>
     <style>
-        /* Retro Neon Accent Palette */
+        /* Technical Console Palette */
         :root {
-            --bg-color: #0d0e12;          /* Deep mainframe cyber black */
-            --text-color: #e0f2fe;        /* Crisp data readout white-blue */
+            --bg-color: #0b0d11;          /* Clean, dark console background */
+            --text-color: #e2e8f0;        /* Light slate for high readability */
             
-            /* Requested Retro Accent Colors */
-            --neon-red: #ff6b6b;          /* Light Red */
-            --neon-orange: #ffb066;       /* Light Orange */
-            --neon-blue: #7dd3fc;         /* Light Blue */
+            /* Clean Retro Accents */
+            --accent-red: #f87171;         /* Light Red */
+            --accent-orange: #fb923c;      /* Light Orange */
+            --accent-blue: #38bdf8;        /* Light Blue */
             
-            --text-glow: rgba(125, 211, 252, 0.4);
-            --panel-bg: #111319;
-            --border-color: var(--neon-blue);
-            --accent-dim: #475569;
+            --panel-bg: #11151d;
+            --border-color: #1e293b;
+            --text-muted: #64748b;
         }
 
         * {
@@ -31,70 +30,61 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Courier New', Courier, monospace;
-            text-shadow: 0 0 4px var(--text-glow);
-            line-height: 1.5;
-            padding: 15px;
-        }
-
-        /* CRT Scanline Filter Overlay */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
-            z-index: 99999;
-            background-size: 100% 3px;
-            pointer-events: none;
+            line-height: 1.6;
+            padding: 20px;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--border-color);
             background-color: var(--panel-bg);
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(125, 211, 252, 0.15);
+            padding: 25px;
         }
 
         header {
-            border: 1px dashed var(--neon-orange);
-            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
             margin-bottom: 20px;
         }
 
         .banner-text {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
-            color: var(--neon-orange);
+            color: var(--text-muted);
         }
 
-        /* Rigid Text-Based Command Menu */
+        /* Structured Navigation Tabs */
         nav {
             display: flex;
             flex-wrap: wrap;
             border: 1px solid var(--border-color);
             margin-bottom: 25px;
+            background-color: #0d1017;
         }
 
         nav a {
-            color: var(--text-color);
+            color: var(--text-muted);
             text-decoration: none;
-            padding: 10px;
+            padding: 12px;
             font-size: 0.85rem;
             border-right: 1px solid var(--border-color);
             flex-grow: 1;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
         }
 
-        nav a:hover, nav a.active {
-            background-color: var(--neon-blue);
-            color: #000000;
-            text-shadow: none;
+        nav a:hover {
+            color: var(--text-color);
+            background-color: #161b22;
+        }
+
+        nav a.active {
+            background-color: var(--accent-blue);
+            color: #0b0d11;
             font-weight: bold;
         }
 
@@ -116,41 +106,41 @@
 
         h1, h2, h3 {
             margin-bottom: 15px;
-            text-transform: uppercase;
             font-weight: bold;
         }
 
         h1 { 
-            font-size: 2.2rem; 
+            font-size: 1.8rem; 
             text-align: center; 
-            letter-spacing: 3px; 
-            color: var(--neon-red);
-            text-shadow: 0 0 8px rgba(255, 107, 107, 0.6);
+            letter-spacing: 1px; 
+            color: var(--accent-red);
+            padding: 10px 0;
         }
         h2 { 
-            font-size: 1.4rem; 
-            padding-bottom: 4px; 
+            font-size: 1.3rem; 
+            padding-bottom: 6px; 
             margin-bottom: 20px; 
-            color: var(--neon-orange); 
-            text-shadow: 0 0 6px rgba(255, 176, 102, 0.5);
+            color: var(--accent-orange); 
+            border-bottom: 1px dashed var(--border-color);
         }
         h3 { 
-            font-size: 1.1rem; 
+            font-size: 1.05rem; 
             margin-top: 25px; 
-            color: var(--neon-blue); 
+            color: var(--accent-blue); 
         }
 
         p {
             margin-bottom: 15px;
             font-size: 0.95rem;
+            color: #cbd5e1;
         }
 
-        /* Vintage Command Line Message Box */
+        /* Engineering Data Callout Block */
         blockquote {
-            border-left: 4px solid var(--neon-red);
-            padding: 10px 0 10px 15px;
+            border-left: 3px solid var(--accent-red);
+            padding: 12px 15px;
             margin: 20px 0;
-            background: #181115;
+            background: #161b22;
         }
 
         ul, ol {
@@ -165,8 +155,9 @@
         }
 
         ul li::before {
-            content: "-> ";
-            color: var(--neon-blue);
+            content: "• ";
+            color: var(--accent-blue);
+            font-weight: bold;
         }
 
         ol li {
@@ -177,50 +168,49 @@
 
         .danger-list li::before {
             content: "[!] ";
-            color: var(--neon-red);
+            color: var(--accent-red);
         }
         
         .danger-list span {
-            color: var(--neon-orange);
+            color: var(--accent-orange);
         }
 
-        /* ASCII Diagram Boxes */
+        /* Code/Data Blocks */
         .diagram-box {
-            border: 1px double var(--neon-orange);
+            border: 1px solid var(--border-color);
             padding: 15px;
             text-align: left;
             white-space: pre-wrap;
             overflow-x: auto;
             margin: 20px 0;
             font-size: 0.85rem;
-            background: #000;
-            color: var(--neon-orange);
+            background: #0d1017;
+            color: #94a3b8;
         }
 
         .image-container {
             border: 1px solid var(--border-color);
             padding: 10px;
             margin: 20px 0;
-            text-align: center;
+            background: #0d1017;
         }
 
-        /* Dithered Matrix Filter to make modern pictures look like CRT graphics */
         .image-container img {
             max-width: 100%;
             height: auto;
-            border: 1px solid var(--border-color);
-            filter: grayscale(1) brightness(1.2) contrast(1.8);
-            opacity: 0.65;
+            display: block;
+            margin: 0 auto;
+            opacity: 0.8;
         }
 
         .image-caption {
             font-size: 0.8rem;
-            margin-top: 8px;
-            letter-spacing: 1px;
-            color: var(--neon-blue);
+            margin-top: 10px;
+            text-align: center;
+            color: var(--text-muted);
         }
 
-        /* Old-School Text Tables */
+        /* Clean Technical Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -230,36 +220,28 @@
 
         th, td {
             border: 1px solid var(--border-color);
-            padding: 10px;
+            padding: 12px;
             text-align: left;
         }
 
         th {
-            background-color: #161e2e;
-            color: var(--neon-blue);
-        }
-
-        /* Retro Terminal Blinking Animation */
-        .blink {
-            animation: terminal-blink 1s steps(2, start) infinite;
-        }
-
-        @keyframes terminal-blink {
-            to { visibility: hidden; }
+            background-color: #161b22;
+            color: var(--accent-blue);
+            font-weight: bold;
         }
 
         footer {
-            border-top: 1px dashed var(--border-color);
+            border-top: 1px solid var(--border-color);
             padding-top: 15px;
             text-align: center;
             font-size: 0.8rem;
             margin-top: 30px;
-            color: var(--accent-dim);
+            color: var(--text-muted);
         }
 
         @media (max-width: 600px) {
             nav a { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
-            h1 { font-size: 1.6rem; }
+            h1 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -268,46 +250,44 @@
     
     <header>
         <div class="banner-text">
-            <span>RUN://MONSOONLIFT.EXE</span>
-            <span>SYS_STATUS: ARCHIVAL_MODE</span>
+            <span>System: MONSOONLIFT.EXE</span>
+            <span>Mode: Technical Documentation Archive</span>
         </div>
     </header>
 
     <nav id="nav-tabs">
-        <a href="#home" class="tab-link active" onclick="switchPage('home')">[01_CORE]</a>
-        <a href="#challenge" class="tab-link" onclick="switchPage('challenge')">[02_CRISIS]</a>
-        <a href="#mechanism" class="tab-link" onclick="switchPage('mechanism')">[03_MECH]</a>
-        <a href="#specs" class="tab-link" onclick="switchPage('specs')">[04_PHYS]</a>
-        <a href="#budget" class="tab-link" onclick="switchPage('budget')">[05_BUDG]</a>
-        <a href="#metrics" class="tab-link" onclick="switchPage('metrics')">[06_METR]</a>
-        <a href="#roadmap" class="tab-link" onclick="switchPage('roadmap')">[07_MAP]</a>
+        <a href="#home" class="tab-link active" onclick="switchPage('home')">01_CORE</a>
+        <a href="#challenge" class="tab-link" onclick="switchPage('challenge')">02_CRISIS</a>
+        <a href="#mechanism" class="tab-link" onclick="switchPage('mechanism')">03_MECH</a>
+        <a href="#specs" class="tab-link" onclick="switchPage('specs')">04_PHYS</a>
+        <a href="#budget" class="tab-link" onclick="switchPage('budget')">05_BUDG</a>
+        <a href="#metrics" class="tab-link" onclick="switchPage('metrics')">06_METR</a>
+        <a href="#roadmap" class="tab-link" onclick="switchPage('roadmap')">07_MAP</a>
     </nav>
 
     <main>
         <div id="home" class="page active">
-            <h1>=========================
-===  MONSOONLIFT.EXE  ===
-=========================</h1>
-            <p style="text-align: center; color: var(--neon-orange); letter-spacing: 1px;">&lt; MICRO-SCALE GRAVITATIONAL FLUID ENERGETICS FOR DISASTER RELIEF &gt;</p>
+            <h1>MONSOONLIFT Project Brief</h1>
+            <p style="text-align: center; color: var(--accent-orange);">Micro-Scale Gravitational Fluid Energetics for Disaster Relief</p>
             
             <blockquote>
-                <strong style="color: var(--neon-red);">CENTRAL RESEARCH STATEMENT:</strong><br>
+                <strong style="color: var(--accent-red);">Central Research Objective:</strong><br>
                 Developing an open-source, ultra-low-cost mechanism capable of intercepting high-velocity storm runoff and converting fluid head potential into electricity when grid networks collapse.
             </blockquote>
             <p>This initiative focuses on decentralized community empowerment, bypassing broken central energy networks to sustain emergency communication lines and life-saving equipment using ambient rain surges.</p>
         </div>
 
         <div id="challenge" class="page">
-            <h2>[02] GRID VOLATILITY &amp; CORE DESIGN MANDATE</h2>
+            <h2>[02] Grid Volatility &amp; Core Design Mandate</h2>
             <p>During extreme weather disasters, frontline communities face distinct infrastructure vulnerabilities that paralyze localized rescue efforts:</p>
             
             <ul class="danger-list">
-                <li><strong>SUPPLY LINE COLLAPSE:</strong> Cost-prohibitive and dangerous transport of diesel fuel shipments to isolated zones.</li>
-                <li><strong>GRID FREQUENCY FAULTS:</strong> Cascading failures and physical destruction of centralized transformers.</li>
-                <li><strong>DISTRIBUTION BREAKDOWN:</strong> Total loss of grid power disabling critical water pumps and rescue beacons.</li>
+                <li><strong>Supply Line Collapse:</strong> Cost-prohibitive and dangerous transport of diesel fuel shipments to isolated zones.</li>
+                <li><strong>Grid Frequency Faults:</strong> Cascading failures and physical destruction of centralized transformers.</li>
+                <li><strong>Distribution Breakdown:</strong> Total loss of grid power disabling critical water pumps and rescue beacons.</li>
             </ul>
 
-            <h3>ENGINEERING OBJECTIVES (SDG ALIGNMENT)</h3>
+            <h3>Engineering Objectives (SDG Alignment)</h3>
             <p>The system is strategically architected to meet rigorous off-grid deployment metrics:</p>
             <ul>
                 <li><strong>SDG 7 (Affordable Clean Energy):</strong> Generates immediate, zero-emission electricity from gravity and water flow.</li>
@@ -317,9 +297,9 @@
         </div>
 
         <div id="mechanism" class="page">
-            <h2>[03] DEVELOPMENT PIPELINE &amp; FLUID ROUTING</h2>
+            <h2>[03] Development Pipeline &amp; Fluid Routing</h2>
             
-            <h3>ENGINEERING LIFECYCLE METHODOLOGY</h3>
+            <h3>Engineering Lifecycle Methodology</h3>
             <ol>
                 <li><strong>Vulnerability Analysis:</strong> Isolating high-risk grid junctions and identifying local temporary rescue shelters.</li>
                 <li><strong>Hydrologic Profiling:</strong> Logging regional precipitation rates and identifying predictable runoff discharge paths.</li>
@@ -329,7 +309,7 @@
                 <li><strong>Iterative Optimization:</strong> Refining internal intake geometry to maximize rotational armature velocities.</li>
             </ol>
 
-            <h3>OPERATIONAL FLUID DYNAMICS</h3>
+            <h3>Operational Fluid Dynamics</h3>
             <p>The process follows a closed-loop logical pathway to generate power on-demand:</p>
             <ul>
                 <li>Storm runoff is gathered at a primary low-altitude filtration basin.</li>
@@ -341,47 +321,42 @@
         </div>
 
         <div id="specs" class="page">
-            <h2>[04] STRUCTURAL METRICS &amp; COMPONENT MANIFEST</h2>
+            <h2>[04] Structural Metrics &amp; Component Manifest</h2>
             <p>Below is the data routing architecture mapping energy conversion stages from ambient environmental forces to practical light output:</p>
             
             <div class="diagram-box">
-+-----------------------------------------------------------------+
-|                    ENERGY CONVERSION CONDUIT                    |
-+-----------------------------------------------------------------+
- [ SOLAR HARVEST ] ---> ( FLUID LIFT PUMP ) ---> [ ELEVATED MASS ]
-                                                        |
-                                                        v
-   [ MODULAR LEDs ] <--- ( ELECTROMAGNETIC ) <--- [ GRAVITY DROP ]
-                         [   INDUCTION   ]
-+-----------------------------------------------------------------+</div>
+[ SOLAR HARVEST ARRAY ] ---> ( Fluid Lift Pump ) ---> [ ELEVATED FLUID RESERVOIR ]
+                                                               |
+                                                               v
+   [ EMERGENCY LED CORES ] <--- ( DC Induction Motor ) <--- [ GRAVITY DROP COLUMN ]</div>
 
-            <h3>MATERIALS COMPONENT REGISTRY</h3>
-            <p style="color: var(--neon-red); font-size: 0.9rem; line-height: 1.6;">
-                [01] OPTIMIZED PHOTOVOLTAIC HARVEST PANEL // [02] SUBMERSIBLE INTAKE & FLUID EXTRACTION UNIT // [03] HIGH-VOLUME CYLINDRICAL RETENTION CONTAINERS // [04] REINFORCED VINYL FEED COUPLINGS // [05] HIGH-REVOLUTION BRUSHED DC INDUCTION COMPONENT // [06] LOW-DRAW EMERGENCY ILLUMINATION LEDS // [07] RECYCLABLE PLYWOOD RESILIENCE FRAME SHELLS // [08] GEOMETRIC STABILIZING REINFORCEMENTS
+            <h3>Materials Component Registry</h3>
+            <p style="color: var(--accent-red); font-size: 0.9rem; line-height: 1.6;">
+                01. Optimized Photovoltaic Harvest Panel // 02. Submersible Intake & Fluid Extraction Unit // 03. High-Volume Cylindrical Retention Containers // 04. Reinforced Vinyl Feed Couplings // 05. High-Revolution Brushed DC Induction Component // 06. Low-Draw Emergency Illumination LEDs // 07. Recyclable Plywood Resilience Frame Shells // 08. Geometric Stabilizing Reinforcements
             </p>
         </div>
 
         <div id="budget" class="page">
-            <h2>[05] MATHEMATICAL LOGIC &amp; FINANCIAL BALANCE SHEET</h2>
+            <h2>[05] Mathematical Logic &amp; Financial Balance Sheet</h2>
             
-            <h3>THEORETICAL HYDRO-POTENTIAL MODEL</h3>
+            <h3>Theoretical Hydro-Potential Model</h3>
             <p>System capacity and energy output are calculated using standard fluid mechanics principles:</p>
-            <div class="diagram-box" style="text-align: center; font-size: 1.2rem; font-weight: bold;">
+            <div class="diagram-box" style="text-align: center; font-size: 1.1rem; color: var(--accent-orange);">
    P = η · ρ · g · Q · Δh
             </div>
 
-            <h3>EQUATION VARIABLE KEY</h3>
+            <h3>Equation Variable Key</h3>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>PARAMETER DESCRIPTION</th>
-                    <th>METRIC UNIT</th>
+                        <th>Parameter Description</th>
+                        <th>Metric Unit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr><td>P</td><td>Total Net Generated Electrical Power Output</td><td>Watts (W)</td></tr>
-                    <tr><td>η</td><td>System Efficiency Factor ( accounting for mechanical friction )</td><td>Coefficient</td></tr>
+                    <tr><td>η</td><td>System Efficiency Factor (accounting for mechanical friction)</td><td>Coefficient</td></tr>
                     <tr><td>ρ</td><td>Volumetric Mass Density of Working Fluid</td><td>kg/m³</td></tr>
                     <tr><td>g</td><td>Standard Acceleration of Local Planetary Gravity</td><td>9.81 m/s²</td></tr>
                     <tr><td>Q</td><td>Volumetric Fluid Flow Displacement Rate</td><td>m³/s</td></tr>
@@ -389,13 +364,13 @@
                 </tbody>
             </table>
 
-            <h3>PROJECT COST PROJECTION (LOCAL ASSEMBLY VALUE)</h3>
+            <h3>Project Cost Projection (Local Assembly Value)</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>LINE ITEM DESCRIPTION</th>
-                        <th>UNIT COST INDEX</th>
-                        <th>QUANTITY</th>
+                        <th>Line Item Description</th>
+                        <th>Unit Cost Index</th>
+                        <th>Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -403,45 +378,41 @@
                     <tr><td>Micro Fluid Submersible Pump</td><td>RM  6.00</td><td>1 Unit</td></tr>
                     <tr><td>Clear Polyvinyl Conduit (1m)</td><td>RM  2.00</td><td>1 Unit</td></tr>
                     <tr><td>High-RPM DC Generator Armature</td><td>RM  5.00</td><td>1 Unit</td></tr>
-                    <tr><td>High-Efficiency LED Array Array</td><td>RM  1.00</td><td>1 Unit</td></tr>
+                    <tr><td>High-Efficiency LED Array Block</td><td>RM  1.00</td><td>1 Unit</td></tr>
                     <tr><td>Structural Core Casing & Mounts</td><td>RM  0.00</td><td>Variable</td></tr>
-                    <tr style="color: var(--neon-orange);">
-                        <td><strong>GROSS BILL OF MATERIALS COST</strong></td>
-                        <td colspan="2"><strong>RM 27.00 ONLY</strong></td>
+                    <tr style="color: var(--accent-orange); background: #161b22;">
+                        <td><strong>Gross Bill of Materials Cost</strong></td>
+                        <td colspan="2"><strong>RM 27.00 Total</strong></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <div id="metrics" class="page">
-            <h2>[06] DIAGNOSTIC REVIEWS &amp; FIELD TESTING METRICS</h2>
+            <h2>[06] Diagnostic Reviews &amp; Field Testing Metrics</h2>
             
-            <h3>CRITICAL EXCEPTION RUNTIME LOG</h3>
+            <h3>Critical Exception Runtime Log</h3>
             <p>Real-world testing scenarios identified three baseline hardware vulnerabilities that have been successfully mitigated:</p>
             <ul class="danger-list">
                 <li><strong>ERR_01 [Low Voltage Induction]:</strong> Insufficient energy output due to a short vertical drop.<br>
-                <span>[REPAIR INTERVENTION]:</span> Heightened the structural drop column to increase fluid velocity.</li>
+                <span>[Resolution]:</span> Heightened the structural drop column to increase fluid velocity.</li>
                 <li><strong>ERR_02 [Pressure Joint Rupture]:</strong> Water leaking from loose hose fittings.<br>
-                <span>[REPAIR INTERVENTION]:</span> Wrapped connections with water-tight high-grade sealant matrix.</li>
+                <span>[Resolution]:</span> Wrapped connections with water-tight high-grade sealant matrix.</li>
                 <li><strong>ERR_03 [Structural Kinetic Sway]:</strong> Tower framework shaking during sudden fluid drops.<br>
-                <span>[REPAIR INTERVENTION]:</span> Stabilized frame geometry using triangular load-bearing braces.</li>
+                <span>[Resolution]:</span> Stabilized frame geometry using triangular load-bearing braces.</li>
             </ul>
 
-            <h3>FIELD TEST PERFORMANCE SUMMARY</h3>
+            <h3>Field Test Performance Summary</h3>
             <p>Empirical monitoring data from community deployments highlights positive performance trends:</p>
             <ul>
                 <li><strong>High Community Adaptability:</strong> Local operators easily learned how to assemble the system framework.</li>
                 <li><strong>Reliable Power Generation:</strong> Fluid drops successfully generated continuous energy for signal light grids.</li>
                 <li><strong>Low Maintenance Burden:</strong> Non-specialized build allowed simple repairs without advanced tools.</li>
             </ul>
-            <div class="diagram-box" style="border-color: var(--neon-red); color: var(--neon-red);">
-[SYSTEM EVALUATION STATE: METRICS VALIDATED]
->>> ALL OPERATIONAL CHOKEPOINTS INTERCEPTED.
->>> TERMINAL STATUS READY <span class="blink">_</span></div>
         </div>
 
         <div id="roadmap" class="page">
-            <h2>[07] REGIONAL RISK INDEX &amp; TESTING GEOGRAPHY</h2>
+            <h2>[07] Regional Risk Index &amp; Testing Geography</h2>
             <p>Meteorological data logs pinpoint highly vulnerable monsoon zones where micro-scale power generation is most urgently needed:</p>
             
             <ul>
@@ -451,18 +422,16 @@
                 <li><strong>Philippines Hub:</strong> Isolated coastal islands vulnerable to severe storm surge conditions.</li>
             </ul>
 
-            <p style="text-align: center; margin-top: 20px; color: var(--neon-red);">[ HARDWARE INTEGRATION: STORMWATER INTERCEPTION ]</p>
-
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" alt="Precipitation Area">
-                <div class="image-caption">FIGURE 7.1: HIGHEST PRECIPITATION TARGET RADIAL LOGS</div>
+                <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" alt="Precipitation Area Mapping">
+                <div class="image-caption">Figure 7.1: Regional Hydrologic Precipitation Target Mapping</div>
             </div>
         </div>
 
     </main>
 
     <footer>
-        MONSOONLIFT GLOBAL RESILIENCE LABS // TERMINAL ARCHIVE #89A
+        MONSOONLIFT Global Resilience Engineering Group // Document Reference #89A
     </footer>
 </div>
 
