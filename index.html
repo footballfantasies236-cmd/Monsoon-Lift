@@ -145,7 +145,7 @@
             margin-bottom: 20px;
             font-size: 0.975rem;
             color: #334155;
-            light-height: 1.6;
+            line-height: 1.6;
         }
 
         blockquote {
@@ -395,7 +395,7 @@
             <h1>MONSOONLIFT</h1>
             <div class="sub-tagline">Decentralized Hydro-Kinetic Community Power Grid</div>
             
-            <blockquote>
+            blockquote>
                 <strong>Core Research Mandate:</strong><br>
                 Designing modular mechanisms that process extreme regional monsoon rainfall vectors directly into clean, off-grid electrical backups during urban infrastructure blackouts.
             </blockquote>
@@ -599,11 +599,13 @@
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0f172a); // Deep professional dark background
 
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / 400, 0.1, 100);
+    // Default aspects handle safely if initialization occurs while node is hidden
+    const initialWidth = container.clientWidth || 600;
+    const camera = new THREE.PerspectiveCamera(45, initialWidth / 400, 0.1, 100);
     camera.position.set(0, 0, 6.5);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(container.clientWidth, 400);
+    renderer.setSize(initialWidth, 400);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
