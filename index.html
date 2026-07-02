@@ -40,7 +40,7 @@
             border: 1px solid var(--border-color);
             background-color: var(--panel-bg);
             padding: 30px;
-            box-shadow: 0 10px 25px rgba(148, 163, 184, 0.15); /* Elegant, soft shadow to make it pop */
+            box-shadow: 0 10px 25px rgba(148, 163, 184, 0.15);
             border-radius: 4px;
         }
 
@@ -143,12 +143,11 @@
             color: #334155;
         }
 
-        /* Bold Callout Block */
         blockquote {
             border-left: 4px solid var(--accent-red);
             padding: 15px;
             margin: 25px 0;
-            background: #fff5f5; /* Light red tint to make it jump out */
+            background: #fff5f5;
             border-radius: 0 4px 4px 0;
         }
 
@@ -188,7 +187,6 @@
             font-weight: bold;
         }
 
-        /* Clean Technical Boxes */
         .diagram-box {
             border: 1px solid var(--accent-blue);
             padding: 15px;
@@ -197,7 +195,7 @@
             overflow-x: auto;
             margin: 25px 0;
             font-size: 0.85rem;
-            background: #f0f9ff; /* Light clean blue tint */
+            background: #f0f9ff;
             color: #0369a1;
             font-weight: bold;
             border-radius: 4px;
@@ -227,25 +225,58 @@
             font-weight: bold;
         }
 
-        /* SDG Accent Cards */
-        .sdg-badge-container {
-            margin: 15px 0;
+        /* SDG Display Cards with Image Cuttings */
+        .sdg-block {
+            display: flex;
+            align-items: flex-start;
+            margin: 25px 0;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 15px;
         }
 
-        .sdg-badge {
-            padding: 6px 12px;
+        .sdg-icon-wrapper {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            margin-right: 20px;
             border-radius: 4px;
-            font-size: 0.85rem;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* Sprite Mapping via CSS Background targeting the provided file */
+        .sdg-icon-wrapper .sdg-sprite {
+            width: 400%;
+            height: 100%;
+            background-image: url('image_6075fc.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .sdg-7-icon { background-position: 0% 0% !important; }
+        .sdg-9-icon { background-position: 33.33% 0% !important; }
+        .sdg-11-icon { background-position: 66.66% 0% !important; }
+
+        .sdg-details {
+            flex-grow: 1;
+        }
+
+        .sdg-title {
+            font-size: 1.05rem;
             font-weight: bold;
-            color: #ffffff;
-            display: inline-block;
             margin-bottom: 5px;
         }
-        .sdg-7 { background-color: #fcc30b; } /* SDG 7 Yellow */
-        .sdg-9 { background-color: #f36d25; } /* SDG 9 Orange */
-        .sdg-11 { background-color: #f99d1c; } /* SDG 11 Dark Orange */
 
-        /* Clean High-Contrast Tables */
+        .sdg-7-title { color: #d69e00; }
+        .sdg-9-title { color: #e05300; }
+        .sdg-11-title { color: #da7e00; }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -280,6 +311,8 @@
         @media (max-width: 600px) {
             nav a { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
             h1 { font-size: 1.5rem; }
+            .sdg-block { flex-direction: column; align-items: center; text-align: center; }
+            .sdg-icon-wrapper { margin-right: 0; margin-bottom: 15px; }
         }
     </style>
 </head>
@@ -328,19 +361,34 @@
             <h3>Engineering Objectives &amp; UN Sustainable Development Goals (SDGs)</h3>
             <p>The system is strategically architected to fulfill the benchmarks of the following global targets:</p>
             
-            <div class="sdg-badge-container">
-                <div class="sdg-badge sdg-7">SDG 7: Affordable and Clean Energy</div>
-                <p style="margin-left: 15px; font-size: 0.9rem;">Provides instant, zero-emission electricity harvested locally from gravity and fluid mass streams without using carbon fuels.</p>
+            <div class="sdg-block">
+                <div class="sdg-icon-wrapper">
+                    <div class="sdg-sprite sdg-7-icon"></div>
+                </div>
+                <div class="sdg-details">
+                    <div class="sdg-title sdg-7-title">Goal 7: Affordable and Clean Energy</div>
+                    <p>Provides instant, zero-emission electricity harvested locally from gravity and fluid mass streams without using carbon fuels.</p>
+                </div>
             </div>
 
-            <div class="sdg-badge-container">
-                <div class="sdg-badge sdg-9">SDG 9: Industry, Innovation and Infrastructure</div>
-                <p style="margin-left: 15px; font-size: 0.9rem;">Relies on a simple, open-source mechanical assembly design utilizing ubiquitous, non-specialized supply chains.</p>
+            <div class="sdg-block">
+                <div class="sdg-icon-wrapper">
+                    <div class="sdg-sprite sdg-9-icon"></div>
+                </div>
+                <div class="sdg-details">
+                    <div class="sdg-title sdg-9-title">Goal 9: Industry, Innovation and Infrastructure</div>
+                    <p>Relies on a simple, open-source mechanical assembly design utilizing ubiquitous, non-specialized supply chains.</p>
+                </div>
             </div>
 
-            <div class="sdg-badge-container">
-                <div class="sdg-badge sdg-11">SDG 11: Sustainable Cities and Communities</div>
-                <p style="margin-left: 15px; font-size: 0.9rem;">Equips isolated, flood-prone neighborhoods with protective autonomous micro-grids to secure community resilience.</p>
+            <div class="sdg-block">
+                <div class="sdg-icon-wrapper">
+                    <div class="sdg-sprite sdg-11-icon"></div>
+                </div>
+                <div class="sdg-details">
+                    <div class="sdg-title sdg-11-title">Goal 11: Sustainable Cities and Communities</div>
+                    <p>Equips isolated, flood-prone neighborhoods with protective autonomous micro-grids to secure community resilience.</p>
+                </div>
             </div>
         </div>
 
@@ -485,29 +533,17 @@
 
 <script>
     function switchPage(pageId) {
-        // Hide all pages
         const pages = document.querySelectorAll('.page');
-        pages.forEach(page => {
-            page.classList.remove('active');
-        });
+        pages.forEach(page => page.classList.remove('active'));
 
-        // Deactivate all navigation links
         const links = document.querySelectorAll('.tab-link');
-        links.forEach(link => {
-            link.classList.remove('active');
-        });
+        links.forEach(link => link.classList.remove('active'));
 
-        // Show selected page
         const targetPage = document.getElementById(pageId);
-        if (targetPage) {
-            targetPage.classList.add('active');
-        }
+        if (targetPage) targetPage.classList.add('active');
 
-        // Highlight matching navigation link
         const activeLink = document.querySelector(`nav a[href="#${pageId}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
+        if (activeLink) activeLink.classList.add('active');
     }
 </script>
 </body>
