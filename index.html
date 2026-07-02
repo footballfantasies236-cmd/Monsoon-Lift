@@ -254,10 +254,10 @@
             font-weight: bold;
         }
 
-        /* SDG Display Cards with Image Cuttings */
+        /* SDG Display Cards using standalone uploaded files */
         .sdg-block {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin: 25px 0;
             background: #f8fafc;
             border: 1px solid var(--border-color);
@@ -266,30 +266,21 @@
         }
 
         .sdg-icon-wrapper {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             flex-shrink: 0;
             margin-right: 20px;
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid rgba(0,0,0,0.1);
-            position: relative;
         }
 
-        .sdg-icon-wrapper .sdg-sprite {
-            width: 400%;
+        .sdg-icon-wrapper img {
+            width: 100%;
             height: 100%;
-            background-image: url('image_6075fc.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            position: absolute;
-            top: 0;
-            left: 0;
+            object-fit: cover;
+            display: block;
         }
-
-        .sdg-7-icon { background-position: 0% 0% !important; }
-        .sdg-9-icon { background-position: 33.33% 0% !important; }
-        .sdg-11-icon { background-position: 66.66% 0% !important; }
 
         .sdg-details {
             flex-grow: 1;
@@ -391,7 +382,7 @@
             
             <div class="sdg-block">
                 <div class="sdg-icon-wrapper">
-                    <div class="sdg-sprite sdg-7-icon"></div>
+                    <img src="download (1).png" alt="SDG 7 Affordable and Clean Energy">
                 </div>
                 <div class="sdg-details">
                     <div class="sdg-title sdg-7-title">Goal 7: Affordable and Clean Energy</div>
@@ -401,7 +392,7 @@
 
             <div class="sdg-block">
                 <div class="sdg-icon-wrapper">
-                    <div class="sdg-sprite sdg-9-icon"></div>
+                    <img src="download (3).png" alt="SDG 9 Industry, Innovation and Infrastructure">
                 </div>
                 <div class="sdg-details">
                     <div class="sdg-title sdg-9-title">Goal 9: Industry, Innovation and Infrastructure</div>
@@ -411,7 +402,7 @@
 
             <div class="sdg-block">
                 <div class="sdg-icon-wrapper">
-                    <div class="sdg-sprite sdg-11-icon"></div>
+                    <img src="download (2).png" alt="SDG 11 Sustainable Cities and Communities">
                 </div>
                 <div class="sdg-details">
                     <div class="sdg-title sdg-11-title">Goal 11: Sustainable Cities and Communities</div>
@@ -437,7 +428,7 @@
             <p>The process follows a closed-loop logical pathway to generate power on-demand:</p>
             <ul>
                 <li>Storm runoff is gathered at a primary low-altitude filtration basin.</li>
-                <li>A secondary solar-assisted pump raises fluid reserves to elevated high-pressure tanks.</li>
+                <li>A secondary mechanical pump raises fluid reserves to elevated high-pressure tanks.</li>
                 <li>Automated or mechanical valves discharge the stored volume down a vertical kinetic column.</li>
                 <li>The descending high-velocity fluid drives an impulse wheel connected to a custom motor armature.</li>
                 <li>The resulting output electricity instantly powers modular, emergency LED indicator grids.</li>
@@ -455,7 +446,7 @@
 
             <h3>Materials Component Registry</h3>
             <p style="color: var(--accent-red); font-size: 0.9rem; line-height: 1.6; font-weight: bold;">
-                01. Optimized Photovoltaic Harvest Panel // 02. Submersible Intake & Fluid Extraction Unit // 03. High-Volume Cylindrical Retention Containers // 04. Reinforced Vinyl Feed Couplings // 05. High-Revolution Brushed DC Induction Component // 06. Low-Draw Emergency Illumination LEDs // 07. Recyclable Plywood Resilience Frame Shells // 08. Geometric Stabilizing Reinforcements
+                01. Submersible Intake & Fluid Extraction Unit // 02. High-Volume Cylindrical Retention Containers // 03. Reinforced Vinyl Feed Couplings // 04. High-Revolution Brushed DC Induction Component // 05. Low-Draw Emergency Illumination LEDs // 06. Recyclable Plywood Resilience Frame Shells // 07. Geometric Stabilizing Reinforcements
             </p>
         </div>
 
@@ -497,7 +488,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Solar Cells (Primary Array)</td><td>RM 13.00</td><td>1 Unit</td></tr>
                     <tr><td>Micro Fluid Submersible Pump</td><td>RM  6.00</td><td>1 Unit</td></tr>
                     <tr><td>Clear Polyvinyl Conduit (1m)</td><td>RM  2.00</td><td>1 Unit</td></tr>
                     <tr><td>High-RPM DC Generator Armature</td><td>RM  5.00</td><td>1 Unit</td></tr>
@@ -505,7 +495,7 @@
                     <tr><td>Structural Core Casing & Mounts</td><td>RM  0.00</td><td>Variable</td></tr>
                     <tr style="color: var(--accent-orange); background: #fffbf7; font-weight: bold;">
                         <td><strong>Gross Bill of Materials Cost</strong></td>
-                        <td colspan="2"><strong>RM 27.00 Total</strong></td>
+                        <td colspan="2"><strong>RM 14.00 Total</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -572,7 +562,6 @@
         const activeLink = document.querySelector(`nav a[href="#${pageId}"]`);
         if (activeLink) activeLink.classList.add('active');
         
-        // Force redraw trigger if switching to 3D matrix panel
         if (pageId === 'specs') { window.dispatchEvent(new Event('resize')); }
     }
 
@@ -580,40 +569,32 @@
     const canvas = document.getElementById('kineticModel');
     const ctx = canvas.getContext('2d');
 
-    let angleX = -0.3; // Starting structural view angle perspective matrix
+    let angleX = -0.3; 
     let angleY = -0.6;
     let wheelRotation = 0;
     let isDragging = false;
     let previousMouseX = 0;
     let previousMouseY = 0;
 
-    // Geometric nodes mapping the structural tower and fluid channel base
     const points = {
-        // Popsicle Lattice Tower Coords
         tLB: [-120, 140, -50], tRB: [-50, 140, -50], tFB: [-50, 140, 20], tLB2: [-120, 140, 20],
         tLT: [-120, -60, -50], tRT: [-50, -60, -50], tFT: [-50, -60, 20], tLT2: [-120, -60, 20],
-        // Mid Tower Cross Bracing Nodes
         tLM: [-120, 40, -50], tRM: [-50, 40, -50], tFM: [-50, 40, 20], tLM2: [-120, 40, 20],
-        // Container box platform positioning coordinates
         cFL: [10, 140, -60], cFR: [130, 140, -60], cBR: [130, 140, 60], cBL: [10, 140, 60],
         cTL: [10, 50, -60], cTR: [130, 50, -60], cTBR: [130, 50, 60], cTBL: [10, 50, 60],
     };
 
-    // Color definitions corresponding to the prototype image components
     const palette = ['#ef4444', '#0ea5e9', '#10b981', '#f59e0b', '#06b6d4', '#8b5cf6'];
 
     function transform(x, y, z) {
-        // Rotate around Y Axis matrix
         let cosY = Math.cos(angleY), sinY = Math.sin(angleY);
         let x1 = x * cosY - z * sinY;
         let z1 = x * sinY + z * cosY;
 
-        // Rotate around X Axis matrix
         let cosX = Math.cos(angleX), sinX = Math.sin(angleX);
         let y2 = y * cosX - z1 * sinX;
         let z2 = y * sinX + z1 * cosX;
 
-        // Orthogonal projection coordinates tracking layout center offset
         const zoom = 1.6;
         return {
             x: x1 * zoom + canvas.width / 2 - 30,
@@ -636,7 +617,6 @@
     function renderLoop() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // 1. Draw Lower Containment Basin Framework Layout
         drawLine(points.cFL, points.cFR, '#cbd5e1', 1);
         drawLine(points.cFR, points.cBR, '#cbd5e1', 1);
         drawLine(points.cBR, points.cBL, '#cbd5e1', 1);
@@ -650,20 +630,17 @@
         drawLine(points.cBR, points.cTBR, '#cbd5e1', 1);
         drawLine(points.cBL, points.cTBL, '#cbd5e1', 1);
 
-        // 2. Draw Structural Wooden Tower Truss Assemblies
         const structuralEdges = [
             ['tLB','tRB'], ['tRB','tFB'], ['tFB','tLB2'], ['tLB2','tLB'],
             ['tLT','tRT'], ['tRT','tFT'], ['tFT','tLT2'], ['tLT2','tLT'],
             ['tLB','tLT'], ['tRB','tRT'], ['tFB','tFT'], ['tLB2','tLT2'],
-            // Structural X-Bracing Lattice Layout
             ['tLB','tRM'], ['tLM','tRT'], ['tRB','tFM'], ['tRM','tFT'],
             ['tFB','tLM2'], ['tFM','tLT2'], ['tLB2','tLM'], ['tLM2','tLT']
         ];
         structuralEdges.forEach(edge => {
-            drawLine(points[edge[0]], points[edge[1]], '#d97706', 3); // Wooden amber profiles
+            drawLine(points[edge[0]], points[edge[1]], '#d97706', 3);
         });
 
-        // 3. Draw Top Fluid Reservoir Cylinder Shell
         for(let h = -60; h >= -110; h -= 10) {
             let step = 16;
             for(let i = 0; i < step; i++) {
@@ -679,21 +656,17 @@
             }
         }
 
-        // 4. Draw Rotating Mechanical Spoon Turbine Armature Base
         let wheelCenterX = 70, wheelOffsetY = 85, wheelCenterZ = 0;
         let axleLength = 40;
         
-        // Draw main mounting stand structure inside the collection bucket
         drawLine([70, 140, 0], [70, 85, 0], '#b45309', 4);
         drawLine([70, 85, 0], [45, 125, 20], '#b45309', 3);
         drawLine([70, 85, 0], [95, 125, -20], '#b45309', 3);
         
-        // Draw main structural rotation center axle line
         drawLine([wheelCenterX, wheelOffsetY, -axleLength/2], [wheelCenterX, wheelOffsetY, axleLength/2], '#334155', 4);
 
-        // Draw individual impeller blade spoons with mapped radial transformation values
         let totalBlades = 6;
-        wheelRotation += 0.025; // Continuous kinetic waterwheel animation rotation speed constant
+        wheelRotation += 0.025;
         
         for (let i = 0; i < totalBlades; i++) {
             let currentAngle = wheelRotation + (i / totalBlades) * Math.PI * 2;
@@ -702,10 +675,8 @@
             let tipX = wheelCenterX + Math.cos(currentAngle) * radius;
             let tipY = wheelOffsetY + Math.sin(currentAngle) * radius;
             
-            // Draw wooden structural arm connection elements
             drawLine([wheelCenterX, wheelOffsetY, 0], [tipX, tipY, 0], '#d97706', 3);
             
-            // Draw colorful water containment collection cups matching your project photo configuration
             let cupPos = transform(tipX, tipY, 0);
             ctx.beginPath();
             ctx.arc(cupPos.x, cupPos.y, 8, 0, Math.PI * 2);
@@ -716,7 +687,6 @@
             ctx.stroke();
         }
 
-        // 5. Draw Dynamic Fluid Conduit Flow Line Vector from Top Basin to Turbine Base
         let startConduit = [-60, -70, -5];
         let midConduit1 = [-10, -50, 20];
         let targetDrop = [40, 50, 0];
@@ -724,7 +694,6 @@
         drawLine(startConduit, midConduit1, 'rgba(14, 165, 233, 0.6)', 4);
         drawLine(midConduit1, targetDrop, 'rgba(14, 165, 233, 0.6)', 4);
 
-        // Kinetic cascading water fluid rendering line animation
         let fluidOffset = (Date.now() / 200) % 1;
         let waterX = targetDrop[0] + (30 - targetDrop[0]) * fluidOffset;
         let waterY = targetDrop[1] + (70 - targetDrop[1]) * fluidOffset;
@@ -733,7 +702,6 @@
         requestAnimationFrame(renderLoop);
     }
 
-    // --- User Vector Mouse Manipulation Matrix Handlers ---
     canvas.addEventListener('mousedown', (e) => {
         isDragging = true;
         previousMouseX = e.clientX;
@@ -754,7 +722,6 @@
 
     window.addEventListener('mouseup', () => { isDragging = false; });
     
-    // Support basic mobile viewport capacitive finger swipes
     canvas.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
             isDragging = true;
@@ -776,7 +743,6 @@
 
     canvas.addEventListener('touchend', () => { isDragging = false; });
 
-    // Bootstrap internal projection environment setup matrix execution lines
     renderLoop();
 </script>
 </body>
