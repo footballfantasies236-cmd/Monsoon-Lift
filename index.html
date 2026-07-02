@@ -45,7 +45,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             border: 4px solid var(--border-color);
             background-color: var(--panel-bg);
@@ -83,11 +83,13 @@
         nav a {
             color: var(--accent-orange);
             text-decoration: none;
-            padding: 12px 24px;
-            font-size: 0.95rem;
+            padding: 12px 18px;
+            font-size: 0.85rem;
             font-weight: 900;
             border-right: 2px solid var(--border-color);
             text-shadow: 0 0 5px rgba(255, 153, 0, 0.6);
+            flex-grow: 1;
+            text-align: center;
         }
 
         nav a:hover, nav a.active {
@@ -115,7 +117,7 @@
             text-transform: uppercase;
         }
 
-        h1 { font-size: 3rem; text-align: center; letter-spacing: 5px; color: var(--accent-blue); text-shadow: 0 0 12px rgba(0, 255, 255, 0.9); }
+        h1 { font-size: 2.5rem; text-align: center; letter-spacing: 5px; color: var(--accent-blue); text-shadow: 0 0 12px rgba(0, 255, 255, 0.9); }
         h2 { font-size: 1.8rem; border-bottom: 2px solid var(--accent-blue); padding-bottom: 8px; margin-bottom: 20px; color: var(--accent-blue); text-shadow: 0 0 8px rgba(0, 255, 255, 0.7); }
         h3 { font-size: 1.3rem; margin-top: 25px; color: var(--accent-orange); text-shadow: 0 0 5px rgba(255, 153, 0, 0.7); }
 
@@ -143,7 +145,7 @@
         }
 
         ul li::before {
-            content: "[!] ";
+            content: "[✓] ";
             color: var(--accent-blue);
         }
 
@@ -151,6 +153,11 @@
             margin-bottom: 10px;
             font-size: 1.05rem;
             color: #cbd5e1;
+        }
+
+        .danger-list li::before {
+            content: "[!] ";
+            color: var(--text-color);
         }
 
         /* Functional Diagrams */
@@ -181,7 +188,6 @@
             max-width: 100%;
             height: auto;
             border: 2px solid var(--accent-blue);
-            /* Converts standard visuals into high-contrast red/blue radar feeds */
             filter: grayscale(1) sepia(1) hue-rotate(340deg) saturate(8) contrast(1.3) brightness(0.95);
         }
 
@@ -237,13 +243,12 @@
     </style>
 </head>
 <body>
-
 <div class="container">
     
     <header>
         <div class="banner-text">
             <span>[ SYSTEM_DEPLOYMENT://MONSOONLIFT.EXE ]</span>
-            <span>[ ENERG_STAT: ACTIVE ]</span>
+            <span>[ REGIONAL_STATUS: ARCHIVED_RECORDS ]</span>
         </div>
     </header>
 
@@ -251,108 +256,262 @@
         <a href="#home" class="tab-link active" onclick="switchPage('home')">01_CORE</a>
         <a href="#challenge" class="tab-link" onclick="switchPage('challenge')">02_CRISIS</a>
         <a href="#mechanism" class="tab-link" onclick="switchPage('mechanism')">03_MECHANICS</a>
-        <a href="#specs" class="tab-link" onclick="switchPage('specs')">04_DATA_LOGS</a>
+        <a href="#specs" class="tab-link" onclick="switchPage('specs')">04_PHYSICS</a>
+        <a href="#budget" class="tab-link" onclick="switchPage('budget')">05_BUDGET</a>
+        <a href="#metrics" class="tab-link" onclick="switchPage('metrics')">06_METRICS</a>
+        <a href="#roadmap" class="tab-link" onclick="switchPage('roadmap')">07_ROADMAP</a>
     </nav>
 
     <main>
         
         <div id="home" class="page active">
             <h1>=== MONSOONLIFT ===</h1>
-            <p style="text-align: center; font-weight: bold; color: var(--accent-orange);">[ GRAVITATIONAL WATER STORAGE OVERRIDES IN FUEL CRISES ]</p>
-            <p style="text-align: center; font-size: 0.95rem; margin-top: 5px; color: var(--accent-blue);">OPERATOR: JUN HAO // STEAM FAIR 2026 ARCHIVE</p>
+            <p style="text-align: center; font-weight: bold; color: var(--accent-orange);">[ MINIATURE COMMUNITY ENERGY STORAGE SYSTEM ]</p>
             
-            <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Hydro Electric Tech Prototype Component">
-                <div class="image-caption">RADAR FEED 01: TURBINE IMPULSION HARNESS (PROTOTYPE SYSTEM ASSEMBLY)</div>
-            </div>
-
             <blockquote>
-                CRITICAL WARNING STATUS: REGIONAL RE-ROUTING COMPLETE. DESIGNED TO OVERRIDE ENTIRELY DEPENDENT FUEL SUPPLY STRATEGIES IN EMBATTLED REGIONS.
+                <strong>MAIN QUESTION:</strong><br>
+                HOW CAN SOUTHEAST ASIAN COMMUNITIES TRANSFORM MONSOON FLOODS INTO RENEWABLE ENERGY DURING FUEL CRISES?
             </blockquote>
+
+            <h3>WHY SPECIFICALLY SOUTHEAST ASIA?</h3>
+            <p>SOUTHEAST ASIA EXPERIENCES EXTREME HYDROLOGICAL VARIATIONS AND RECEIVES SOME OF THE HIGHEST FLOOD VOLUMES GLOBALLY.</p>
+            
+            <ul>
+                <li>MALAYSIA</li>
+                <li>INDONESIA</li>
+                <li>THAILAND</li>
+                <li>PHILIPPINES</li>
+            </ul>
+
+            <p style="color: var(--accent-blue); text-align: center; font-weight: bold; margin-top: 20px;">[ DIRECT SYSTEM INPUT LOG: 🌧️ FLOOD WATER RESOURCING ]</p>
+
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" alt="Torrential Monsoon Rainfall Impact">
+                <div class="image-caption">RADAR FEED 01: REGIONAL PRECIPITATION MATRIX MAP</div>
+            </div>
         </div>
 
         <div id="challenge" class="page">
-            <h2>[02] TRANSPORT THREAT MATRIX</h2>
-            <p>Disrupted regional fuel transit lines throttle oil reliance. Diesel engines immediately halt, generating deep cascading blackout trends through rural communities.</p>
+            <h2>[02] TRANSPORT THREAT MATRIX & OBJECTIVES</h2>
+            <p style="color: var(--accent-orange); font-weight: bold;">CRITICAL CRISIS THREAT: Regional Fuel Supply Vulnerabilities</p>
             
-            <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1547683905-f686c993aae5?auto=format&fit=crop&w=800&q=80" alt="Torrential Monsoon Rainfall Impact">
-                <div class="image-caption">RADAR FEED 02: PRECISION MONSOON MIGRATION PROFILE // HIGH WATER LEVELS ENCOUNTERED</div>
-            </div>
-
-            <h3>DETECTED FALLOUT ANOMALIES:</h3>
-            <ul>
-                <li>High diesel overhead costs freeze agricultural processing and local water transport.</li>
-                <li>Grid infrastructure drops completely offline.</li>
-                <li><strong>The Redirection Focus:</strong> Redirecting torrential floodwaters directly into decentralized kinetic energy stores.</li>
+            <ul class="danger-list">
+                <li>EXPENSIVE IMPORTED DIESEL OVERHEADS</li>
+                <li>SUDDEN INFRASTRUCTURE ELECTRICITY SHORTAGES</li>
+                <li>SEVERE AGRICULTURAL AND URBAN WATER PUMPING IMPEDIMENTS</li>
             </ul>
+
+            <h3>PROJECT OBJECTIVES</h3>
+            <p>DEVELOP A SUSTAINABLE INFRASTRUCTURE UNIT BALANCED TO:</p>
+            <ul>
+                <li>CAPTURE MONSOON DISCHARGE RUNOFFS EFFECTIVELY</li>
+                <li>GENERATE LOCALIZED OFF-GRID ELECTRICAL RESERVES</li>
+                <li>MITIGATE REGIONAL DEPENDENCY UPON PETROLEUM INFRASTRUCTURES</li>
+                <li>DEPLOY DECENTRALIZED ENERGY HUBS TO ASSIST ISOLATED AREAS DURING CRITICAL FLOOD EMERGENCIES</li>
+                <li>STRICTLY FULFILL SUSTAINABLE DEVELOPMENT GOALS: SDG 7 (AFFORDABLE & CLEAN ENERGY), SDG 9 (INDUSTRY, INNOVATION & INFRASTRUCTURE), AND SDG 11 (SUSTAINABLE CITIES).</li>
+            </ul>
+
+            <h3>ENGINEERING DESIGN CYCLE ENGINE</h3>
+            <ol style="margin-left: 20px; color: #cbd5e1; padding-left: 10px; line-height: 2;">
+                <li><strong>IDENTIFY PROBLEM:</strong> EXPOSING CRITICAL WEAKNESSES IN OFF-GRID REFUGEE HUBS.</li>
+                <li><strong>RESEARCH FUEL SHORTAGES:</strong> TRACKING VOLATILITY AND ECONOMIC GRID IMPACT LINES.</li>
+                <li><strong>BRAINSTORM SOLUTIONS:</strong> ISOLATING MONSOON ACCUMULATIONS FOR FLUID PRESSURE ENERGY storage.</li>
+                <li><strong>BUILD PROTOTYPE:</strong> ASSEMBLY OF MINIFIED HYDRAULIC RESERVOIR STRUCTURES.</li>
+                <li><strong>TEST SYSTEM:</strong> METRIC MEASUREMENT LOGS RECORDING INDUCED OUTPUT CURRENT VOLTAGES.</li>
+                <li><strong>IMPROVE DESIGN:</strong> REFINE DISCHARGE CHANNELS FOR HIGHER TURBINE IMPULSION EFFICIENCY.</li>
+            </ol>
         </div>
 
         <div id="mechanism" class="page">
             <h2>[03] FLUID KINETIC RECONSTRUCTION</h2>
-            <p>MonsoonLift uses gravity vectors rather than dangerous or finite battery matrices to cache operational utility lines.</p>
+            
+            <h3>HYDROLOGICAL COMPONENT BEHAVIOR</h3>
+            <ul>
+                <li>THE ACCUMULATED MONSOON VOLUME CACHES AND CONSERVES POTENTIAL POTENCY.</li>
+                <li>PUMP INTAKES FORWARD WATER TO HIGHLY ELEVATED STRUCTURAL PRESSURE RESERVOIRS.</li>
+                <li>CONTROL VALVES SECURE AND SUBSEQUENTLY DISCHARGE FLUIDS VIA FORCE MANIFOLDS.</li>
+            </ul>
+
+            <h3>DISCHARGE CONSEQUENCE LOOPS:</h3>
+            <ul>
+                <li>⚙️ KINETIC TRANSFER SPINNING THE BLADED HYDRO-TURBINE BLADES.</li>
+                <li>⚡ INDUCTION ENGINES HARVESTING RAW MECHANICAL CURRENT IN THE DC MOTOR.</li>
+                <li>💡 HARNESSED KINETIC VOLTAGE ENERGIZING TERMINAL EMERGENCIES LIGHT INDUCTION SCHEMATICS.</li>
+            </ul>
             
             <div class="diagram-box">
-====================== ENERGY COUPLING MAP ======================
-[ HEAVY STORMWATER ] ➔ [ HEIGHT TOWER RESERVOIR ] ➔ [ DOWNWARD TUBE RUN ] 
-                             │
-                             ▼
-                    [ TURBINE ROTATION RPM ] ➔ [ GENERATOR MOTOR ] ➔ [ LIGHTS ]
-=================================================================
+========================= SYSTEM DIAGRAM =========================
+[ SOLAR PANEL ] ➔ CAPTURES SUNLIGHT AND PRODUCES ELECTRICITY
+       │
+       ▼
+ [ WATER PUMP ] ➔ USES ELECTRICITY TO LIFT WATER
+       │
+       ▼
+[ ELEVATED TANK ] ➔ STORES WATER AT HEIGHT FOR POTENTIAL ENERGY
+       │
+       ▼
+ [ WATER FLOW ] ➔ RELEASED WATER CREATES MOVEMENT
+       │
+       ▼
+[ TURBINE & DC MOTOR ] ➔ CONVERTS KINETIC ENERGY INTO ELECTRICAL ENERGY
+       │
+       ▼
+   [ LED ] ➔ LIGHTS UP AS THE FINAL OUTPUT
+==================================================================
             </div>
 
-            <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=800&q=80" alt="Industrial Fluid Tubing Mechanics">
-                <div class="image-caption">RADAR FEED 03: DISCHARGE CONDUIT VALVES AND PIPE NETWORK METRICS</div>
-            </div>
-
-            <h3>OPERATIONAL PIPELINE STEPS:</h3>
-            <ul>
-                <li>Rain catchment groups gather localized flash downpour volumes in a elevated tank.</li>
-                <li>Gravity pulls the storage down through narrow vinyl pathways upon discharge call.</li>
-                <li>The mechanical kinetic velocity triggers the generator armature to feed the light grids.</li>
-            </ul>
+            <h3>MATERIALS REGISTRY (LOW-BUDGET / RECYCLABLE CORE):</h3>
+            <p style="letter-spacing: 1px; color: var(--accent-blue);">SOLAR CELL COMPONENT PANEL // HIGH-RPM REPLICATED PUMP VALVES // PLASTIC FLUID CYLINDER RECEPTACLES // RESILIENT FLEX VINYL TUBING // BRUSHED DC INDUCTOR MOTOR // TARGET OUTPUT LIGHT DIODES // CORRUGATED ARMOR CARDBOARD // FIBER STABILIZATION ICE CREAM WOODEN SUPPORTS // STRUCTURAL REINFORCEMENT MATERIALS</p>
         </div>
 
         <div id="specs" class="page">
-            <h2>[04] GRAVITATIONAL POTENTIAL LOGS</h2>
-            <p>Core Physical Math Verification Equations:</p>
+            <h2>[04] SCIENTIFIC & TROUBLESHOOTING LOGS</h2>
             
-            <div class="diagram-box" style="font-size: 1.3rem; font-weight: 900; color: var(--text-color); border-color: var(--text-color); text-shadow: 0 0 8px var(--text-glow);">
-   PE = m * g * h
+            <h3>ENERGY CONVERSION PATHWAY DIAGRAM</h3>
+            <p><strong>STAGE 01:</strong> RADIANT SOLAR ENERGY PROTOCOLS ➔ INDUCED CURRENT ELECTRICAL STORAGE</p>
+            <p><strong>STAGE 02:</strong> CURRENT ELECTRICAL LOAD DISTRIBUTION ➔ ACTIVE MECHANICAL LOADS (PUMPING)</p>
+            <p><strong>STAGE 03:</strong> MOTIVE KINETIC LIQUID TRANSIT ➔ ACCUMULATED GRAVITATIONAL POTENTIAL ENERGY</p>
+            <p><strong>STAGE 04:</strong> POTENTIAL DROP PRESSURE RESISTANCES ➔ KINETIC MECHANICAL ENERGY ➔ CURRENT GENERATION ENGINE ➔ VISIBLE LUMINOUS OUTPUT</p>
+
+            <h3>MATHEMATICAL INFRASTRUCTURE</h3>
+            <div class="diagram-box" style="font-size: 1.4rem; font-weight: 900; color: var(--text-color); border-color: var(--text-color); text-shadow: 0 0 8px var(--text-glow);">
+P = H * F * G * Q * ΔH
             </div>
 
-            <h3>SYSTEM CALIBRATION PROFILE ARRAYS</h3>
+            <h3>VARIABLE LOG PROFILE MATRIX:</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>STORAGE HEAD RANGE (h)</th>
-                        <th>TURBINE VELOCITY LOG</th>
-                        <th>LED TERMINAL LEVEL STATUS</th>
+                        <th>VARIABLE ID</th>
+                        <th>OPERATIONAL DESIGNATION METRICS</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>10 CM INDEX</td>
-                        <td>LOW VELOCITY RPM</td>
-                        <td>LOW GLOW PROTOCOL ONLY</td>
+                        <td><strong>P</strong></td>
+                        <td>POWER GENERATION ENGINE CAPACITY (TOTAL WATTS EXPELLED)</td>
                     </tr>
                     <tr>
-                        <td>20 CM INDEX</td>
-                        <td>MID VELOCITY RPM</td>
-                        <td>STANDARD GRID INTERFACE ACTIVATED</td>
+                        <td><strong>H</strong></td>
+                        <td>FRICTIONAL LOSS COEFFICIENT (THERMAL AND SOUND DISSIPATION INDICES)</td>
                     </tr>
                     <tr>
-                        <td>30 CM INDEX</td>
-                        <td>HIGH VELOCITY RPM</td>
-                        <td style="color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue);">MAXIMUM LOGGED LUMEN OUTPUT</td>
+                        <td><strong>F</strong></td>
+                        <td>FLUID DENSITY COMPOSITION CONFIGURATION (WATER MASS VALUE CONSTANT)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>G</strong></td>
+                        <td>ACCELERATION CONSTANT UNDER PLANETARY EARTH GRAVITY MAPS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Q</strong></td>
+                        <td>FLOW RATE FLUID VELOCITY (VOLUME TRANSIT DISCHARGE TIMING TRACK)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ΔH</strong></td>
+                        <td>DELTA HYDRAULIC HEAD HEIGHT DIFFERENCE MATRIX</td>
                     </tr>
                 </tbody>
             </table>
 
+            <h3 style="color: var(--text-color);">CRITICAL FAULT MATRIX & RESOLUTION DATA</h3>
+            <ul class="danger-list">
+                <li><strong>DETECTED ERROR:</strong> INSUFFICIENT MOTOR VOLTAGE GENERATED FROM DISCHARGE INTENSITIES.<br>
+                <span style="color: var(--accent-blue);">➔ STRUCTURAL OVERHAUL:</span> EXECUTED REDESIGN INCREASING TOTAL DROP DISCHARGE ANGLE RADIAL VELOCITIES.</li>
+                <li><strong>DETECTED ERROR:</strong> WATER LEAKAGE BREAKS FROM STRUCTURAL JOINT ASSEMBLIES.<br>
+                <span style="color: var(--accent-blue);">➔ STRUCTURAL OVERHAUL:</span> APPLIED INDUSTRIAL POLYMER COATINGS COMPREHENSIVELY THROUGHOUT TUBING TERMINALS.</li>
+                <li><strong>DETECTED ERROR:</strong> INSTABILITY IN PRIMARY SUPPORT SCAFFOLDING TOWER.<br>
+                <span style="color: var(--accent-blue);">➔ STRUCTURAL OVERHAUL:</span> ANCHORED TRUSS CONNECTOR ICE CREAM STICK GUARDS TO EQUALIZE COUNTERBALANCE.</li>
+            </ul>
+        </div>
+
+        <div id="budget" class="page">
+            <h2>[05] FINANCING AND COMPONENT ACQUISITION LOGS</h2>
+            <p>Low-cost sustainable budget framework verified for localized implementation:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>COMPONENT CODE</th>
+                        <th>UNIT PRICE COST INDEX</th>
+                        <th>ALLOCATION QUANTITY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SOLAR PANEL MODULE</td>
+                        <td>RM 13.00</td>
+                        <td>01 UNITS</td>
+                    </tr>
+                    <tr>
+                        <td>MINIATURE WATER PUMP UNIT</td>
+                        <td>RM 6.00</td>
+                        <td>01 UNITS</td>
+                    </tr>
+                    <tr>
+                        <td>TRANSPARENT TUBING DUCTING</td>
+                        <td>RM 2.00</td>
+                        <td>01 METERS</td>
+                    </tr>
+                    <tr>
+                        <td>DC INDUCTION HARNESS MOTOR</td>
+                        <td>RM 5.00</td>
+                        <td>01 UNITS</td>
+                    </tr>
+                    <tr>
+                        <td>LED GLOW NODES ARRAY</td>
+                        <td>RM 1.00</td>
+                        <td>01 PACKS</td>
+                    </tr>
+                    <tr>
+                        <td>RECYCLED FRAME COMPONENTS & MATERIALS</td>
+                        <td>RM 0.00 (SURPLUS)</td>
+                        <td>VARIABLE ACCUMULATION</td>
+                    </tr>
+                    <tr style="border-top: 3px solid var(--accent-blue); background: rgba(0,255,255,0.05);">
+                        <td style="color: var(--accent-blue);"><strong>TOTAL UNIT BUDGET COST:</strong></td>
+                        <td colspan="2" style="color: var(--accent-blue); font-weight: 900; text-shadow: 0 0 10px var(--accent-blue);">RM 27.00 ONLY</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="metrics" class="page">
+            <h2>[06] COMMUNITARIAN FEEDBACK SURVEY METRICS</h2>
+            <p>Data gathered via telemetry testing loops evaluation analysis:</p>
+
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1517055729445-2b1a20bf7b1b?auto=format&fit=crop&w=800&q=80" alt="Electronic Diagnostics Lab Testing">
-                <div class="image-caption">RADAR FEED 04: DC CURRENT VOLTAGE MONITORING ARRAY LOAD ANALYSIS</div>
+                <div style="background: #000; font-size: 1.2rem; padding: 25px; line-height: 2; border: 1px dashed var(--accent-orange);">
+                    <div style="color: var(--text-color); text-shadow: 0 0 8px var(--text-glow);">[✓] PROTOTYPE OPERATIONAL VALIDITY RATIO ➔ 92% AFFIRMED STATUS</div>
+                    <div style="color: var(--accent-orange); text-shadow: 0 0 8px rgba(255,153,0,0.7);">[✓] REGIONAL COMMUNITY BENEFIT LOGIC ➔ 85% CONFIRMED VIABILITY</div>
+                    <div style="color: var(--accent-blue); text-shadow: 0 0 8px rgba(0,255,255,0.7);">[✓] PERSONAL RESIDENTIAL ADOPTION INTENTIONS ➔ 78% DESIRED INTEGRATION</div>
+                </div>
+                <div class="image-caption">RADAR FEED 02: MATRIX STATISTICS SAMPLING FIELD ARCHIVE</div>
+            </div>
+
+            <h3>SURVEY METRIC CONCLUSION</h3>
+            <p>High public affirmation indicates an immediate scalable mandate. The system serves as an impactful emergency baseline model when grid capabilities are completely compromised.</p>
+        </div>
+
+        <div id="roadmap" class="page">
+            <h2>[07] FUTURE STRATEGIC SYSTEM ROADMAP</h2>
+            <p>Escalation protocol routes designed to take the project from prototype to field-ready utility deployments:</p>
+
+            <ul>
+                <li><strong>MACRO STORAGE TANKS:</strong> Increasing primary high-level collection container scales to lock larger volume margins.</li>
+                <li><strong>HIGH CAPACITY IMPULSION WHEELS:</strong> Upgrading blades surfaces geometries to trigger higher RPM speeds.</li>
+                <li><strong>DUAL GENERATION MOTORS:</strong> Linking redundant dual motor armatures for compound current generation arrays.</li>
+                <li><strong>SMART LOG TRACKING SUITE:</strong> Introducing mobile network software apps to feed real-time water levels and discharge warnings straight to community grids.</li>
+            </ul>
+
+            <div class="image-container">
+                <div style="padding: 20px; text-align: left; font-size: 0.9rem; color: var(--accent-blue); line-height: 1.8;">
+                    &gt; STAGE_01 // SECURING LOCALIZED MONSOON RESERVOIRS [COMPLETE]<br>
+                    &gt; STAGE_02 // MATHEMATICAL VARIABLE FORCE MAPPING [COMPLETE]<br>
+                    &gt; STAGE_03 // TELEMETRY INTEGRATION APP DEVELOPMENTS [IN QUEUE]<br>
+                    &gt; STAGE_04 // EXPANDED RENEWABLE VILLAGE GRID COUPLINGS [PLANNED]
+                </div>
+                <div class="image-caption">RADAR FEED 03: PHACED SCALING DEPLOYMENT TARGET INTERFACES</div>
             </div>
         </div>
 
@@ -362,8 +521,33 @@
         <p>*** CODES LOCKED // TRANSMISSION LOOP TERMINATED ***</p>
         <p style="margin-top: 10px; font-size: 0.8rem; color: var(--accent-blue);">MONSOONLIFT CODES ARCHIVE // PROJECT YEAR 2026</p>
     </footer>
-
 </div>
 
 <script>
-    function switchPage
+    function switchPage(pageId) {
+        // Hide all page data blocks
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
+        
+        // Wipe high-contrast styles from navigation buttons
+        const links = document.querySelectorAll('.tab-link');
+        links.forEach(link => link.classList.remove('active'));
+        
+        // Show specified terminal pane
+        document.getElementById(pageId).classList.add('active');
+        
+        // Map target highlight properties to current cursor choice
+        const activeLink = document.querySelector(`a[href="#${pageId}"]`);
+        if(activeLink) activeLink.classList.add('active');
+    }
+
+    // Capture direct routing references on document refresh
+    window.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash.substring(1);
+        if (hash && document.getElementById(hash)) {
+            switchPage(hash);
+        }
+    });
+</script>
+</body>
+</html>
