@@ -215,7 +215,7 @@
             background: #0f172a;
             border-radius: 8px;
             position: relative;
-            height: 400px;
+            height: 500px;
             overflow: hidden;
             box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
         }
@@ -274,45 +274,6 @@
             font-weight: 600;
             border-radius: 4px;
             pointer-events: none;
-        }
-
-        /* Professional Clean Grid Architecture */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            margin: 30px 0;
-        }
-
-        .gallery-card {
-            border: 1px solid var(--border-color);
-            background: #ffffff;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            transition: transform 0.2s ease;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .gallery-content {
-            padding: 15px;
-        }
-
-        .gallery-caption {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-color);
         }
 
         .sdg-block {
@@ -395,32 +356,13 @@
             <h1>MONSOONLIFT</h1>
             <div class="sub-tagline">Decentralized Hydro-Kinetic Community Power Grid</div>
             
-            blockquote>
+            <blockquote>
                 <strong>Core Research Mandate:</strong><br>
                 Designing modular mechanisms that process extreme regional monsoon rainfall vectors directly into clean, off-grid electrical backups during urban infrastructure blackouts.
             </blockquote>
             
-            <h3>Core Engineering Elements</h3>
-            <div class="gallery-grid">
-                <div class="gallery-card">
-                    <img src="18512.jpg" alt="Turbine Base Matrix">
-                    <div class="gallery-content">
-                        <div class="gallery-caption">Fig 1.1: Impeller Assembly Structure</div>
-                    </div>
-                </div>
-                <div class="gallery-card">
-                    <img src="18513.jpg" alt="Flywheel Core Engine">
-                    <div class="gallery-content">
-                        <div class="gallery-caption">Fig 1.2: Inertial Rotor Architecture</div>
-                    </div>
-                </div>
-                <div class="gallery-card">
-                    <img src="18514.jpg" alt="Fluid Capture Assembly">
-                    <div class="gallery-content">
-                        <div class="gallery-caption">Fig 1.3: Fluidic Capture Manifold</div>
-                    </div>
-                </div>
-            </div>
+            <h3>Dynamic Prototype Integration</h3>
+            <p>The system components originally documented in design blueprints have been fully modeled into the interactive digital twin under the <b>03_MECH</b> engine view. Navigate to the mechanical section to run diagnostics directly on the hardware setup.</p>
         </div>
 
         <div id="challenge" class="page">
@@ -479,10 +421,6 @@
         <div id="specs" class="page">
             <h2>[04] Physical Specifications & Blueprint Dimensions</h2>
             
-            <div style="border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; margin-bottom: 30px;">
-                <img src="18512.jpg" alt="Engineering Layout Blueprint" style="width:100%; height:320px; object-fit:cover;">
-            </div>
-
             <h3>Core Assembly Specifications Matrix</h3>
             <table>
                 <thead>
@@ -597,100 +535,145 @@
     const hudDesc = document.getElementById('hudDesc');
     
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0f172a); // Deep professional dark background
+    scene.background = new THREE.Color(0x0f172a); 
 
-    // Default aspects handle safely if initialization occurs while node is hidden
     const initialWidth = container.clientWidth || 600;
-    const camera = new THREE.PerspectiveCamera(45, initialWidth / 400, 0.1, 100);
-    camera.position.set(0, 0, 6.5);
+    const camera = new THREE.PerspectiveCamera(45, initialWidth / 500, 0.1, 100);
+    camera.position.set(0, 1, 5.5);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(initialWidth, 400);
+    renderer.setSize(initialWidth, 500);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Advanced Lighting Profile
-    scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-    const pointLight = new THREE.PointLight(0x38bdf8, 1.2, 50);
-    pointLight.position.set(5, 5, 5);
-    scene.add(pointLight);
+    // Dynamic Lighting Profile
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    const mainLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    mainLight.position.set(5, 10, 7);
+    scene.add(mainLight);
+    
+    const fillLight = new THREE.PointLight(0x38bdf8, 0.6, 20);
+    fillLight.position.set(-4, -2, 3);
+    scene.add(fillLight);
 
-    // Texture Loader Engine
-    const loader = new THREE.TextureLoader();
-    const textures = {
-        turbine: loader.load('18512.jpg'),
-        flywheel: loader.load('18513.jpg'),
-        intake: loader.load('18514.jpg')
-    };
-
-    // Components Information Database for Real-time HUD Feedback
-    const componentsData = [
-        {
-            name: "01 // Impeller Wheel Matrix",
-            desc: "Active hydraulic unit utilizing structured blade paths to process directional water movement.",
-            texture: textures.turbine,
-            radius: 1.0, height: 0.25, posY: 1.2, color: 0x0ea5e9
-        },
-        {
-            name: "02 // Inertial Flywheel Core",
-            desc: "Heavy structural mass optimized to conserve rotational energy momentum during flow variations.",
-            texture: textures.flywheel,
-            radius: 1.2, height: 0.4, posY: 0.0, color: 0xf97316
-        },
-        {
-            name: "03 // Hydro-Intake Manifold",
-            desc: "Precision guidance system managing fluid velocity thresholds across primary turbine intakes.",
-            texture: textures.intake,
-            radius: 0.9, height: 0.3, posY: -1.2, color: 0xef4444
-        }
-    ];
-
+    // Master interactive structure group
     const masterSystemGroup = new THREE.Group();
     const selectableMeshes = [];
 
-    // Construct Exploded System Architecture View
-    componentsData.forEach((data, index) => {
-        const meshGroup = new THREE.Group();
+    // Materials Library matching the real prototype physics
+    const woodMaterial = new THREE.MeshStandardMaterial({ color: 0xdfc49f, roughness: 0.8, metalness: 0.1 });
+    const plasticTranslucent = new THREE.MeshStandardMaterial({ color: 0xffffff, transparent: true, opacity: 0.35, roughness: 0.2, metalness: 0.1 });
+    const axleMaterial = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.5 });
+
+    // 1. POPSICLE STICK SUPPORT TOWER ASSEMBLY
+    const towerGroup = new THREE.Group();
+    towerGroup.position.set(0.6, 0.3, -0.5);
+
+    const stickGeo = new THREE.BoxGeometry(0.1, 1.8, 0.02);
+    const crossStickGeo = new THREE.BoxGeometry(0.1, 1.2, 0.02);
+
+    // Vertical framing columns
+    const leg1 = new THREE.Mesh(stickGeo, woodMaterial); leg1.position.set(-0.4, 0, -0.4);
+    const leg2 = new THREE.Mesh(stickGeo, woodMaterial); leg2.position.set(0.4, 0, -0.4);
+    const leg3 = new THREE.Mesh(stickGeo, woodMaterial); leg3.position.set(-0.4, 0, 0.4);
+    const leg4 = new THREE.Mesh(stickGeo, woodMaterial); leg4.position.set(0.4, 0, 0.4);
+    towerGroup.add(leg1, leg2, leg3, leg4);
+
+    // X-Truss supports matching Photo 18514
+    for(let i = -0.4; i <= 0.4; i += 0.8) {
+        const braceLeft = new THREE.Mesh(crossStickGeo, woodMaterial);
+        braceLeft.rotation.z = 0.8;
+        braceLeft.position.set(0, 0, i);
         
-        // Main visible mechanical node disk
-        const geometry = new THREE.CylinderGeometry(data.radius, data.radius, data.height, 40);
-        const material = new THREE.MeshStandardMaterial({
-            map: data.texture,
-            roughness: 0.3,
-            metalness: 0.2
-        });
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.userData = { id: index, name: data.name, desc: data.desc };
-        meshGroup.add(mesh);
+        const braceRight = new THREE.Mesh(crossStickGeo, woodMaterial);
+        braceRight.rotation.z = -0.8;
+        braceRight.position.set(0, 0, i);
+        
+        towerGroup.add(braceLeft, braceRight);
+    }
+    
+    // Top deck
+    const deckGeo = new THREE.BoxGeometry(1.0, 0.04, 1.0);
+    const topDeck = new THREE.Mesh(deckGeo, woodMaterial);
+    topDeck.position.y = 0.9;
+    towerGroup.add(topDeck);
+    
+    masterSystemGroup.add(towerGroup);
 
-        // Tech Blueprint Wireframe Accents
-        const wireframeGeom = new THREE.CylinderGeometry(data.radius + 0.02, data.radius + 0.02, data.height + 0.02, 16);
-        const wireframeMat = new THREE.MeshBasicMaterial({
-            color: data.color,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.15
-        });
-        const wireFrame = new THREE.Mesh(wireframeGeom, wireframeMat);
-        meshGroup.add(wireFrame);
+    // 2. PLASTIC BOTTLE HEADER RESERVOIR
+    const reservoirGeo = new THREE.CylinderGeometry(0.3, 0.3, 0.9, 24);
+    const reservoir = new THREE.Mesh(reservoirGeo, plasticTranslucent);
+    reservoir.position.set(0.6, 1.7, -0.5);
+    reservoir.userData = { name: "01 // Fluid Header Reservoir", desc: "Top-mounted plastic reservoir feeding localized gravity-driven water column velocity down to the impeller." };
+    selectableMeshes.push(reservoir);
+    masterSystemGroup.add(reservoir);
 
-        meshGroup.position.y = data.posY;
-        masterSystemGroup.add(meshGroup);
-        selectableMeshes.push(mesh); // Track for mouse hit raycasting detection
-    });
+    // 3. TUBING CONDUIT
+    const pipePoints = [];
+    pipePoints.push(new THREE.Vector3(0.6, 1.3, -0.5));
+    pipePoints.push(new THREE.Vector3(0.5, 0.6, 0.1));
+    pipePoints.push(new THREE.Vector3(-0.1, 0.3, 0.2));
+    const pipeCurve = new THREE.CatmullRomCurve3(pipePoints);
+    const pipeGeo = new THREE.TubeGeometry(pipeCurve, 32, 0.04, 12, false);
+    const pipeline = new THREE.Mesh(pipeGeo, plasticTranslucent);
+    masterSystemGroup.add(pipeline);
 
-    // Central structural axis shaft connection line
-    const centralShaft = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.08, 0.08, 3.2, 16),
-        new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.5, metalness: 0.8 })
-    );
-    masterSystemGroup.add(centralShaft);
+    // 4. BALANCED TURBINE AXIS & IMPELLER ROTOR (The Bottle Cap Waterwheel)
+    const waterwheelGroup = new THREE.Group();
+    waterwheelGroup.position.set(-0.2, -0.2, 0.2);
+
+    // Central Carbon Axle Line
+    const mainAxle = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.6, 16), axleMaterial);
+    mainAxle.rotation.z = Math.PI / 2;
+    waterwheelGroup.add(mainAxle);
+
+    // Impeller Bottle Caps configuration matching color arrays from Photo 18512
+    const capColors = [0x0ea5e9, 0xea580c, 0xffffff, 0x1e3a8a, 0x22c55e]; 
+    const capGroup = new THREE.Group();
+
+    for (let i = 0; i < 5; i++) {
+        const angle = (i / 5) * Math.PI * 2;
+        const capHolder = new THREE.Group();
+        capHolder.rotation.x = angle;
+
+        // Stick arm extension
+        const arm = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.4, 0.02), woodMaterial);
+        arm.position.y = 0.2;
+        capHolder.add(arm);
+
+        // Cap geometry
+        const capGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.08, 24);
+        const capMat = new THREE.MeshStandardMaterial({ color: capColors[i], roughness: 0.4 });
+        const cap = new THREE.Mesh(capGeo, capMat);
+        cap.position.y = 0.4;
+        cap.rotation.x = Math.PI / 2;
+        capHolder.add(cap);
+
+        capGroup.add(capHolder);
+    }
+    waterwheelGroup.add(capGroup);
+    
+    // Set interactive properties on waterwheel hub base
+    const wheelHitbox = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.3, 16), new THREE.MeshBasicMaterial({visible: false}));
+    wheelHitbox.rotation.x = Math.PI / 2;
+    wheelHitbox.userData = { name: "02 // Multi-Vector Impeller Wheel", desc: "Constructed using color-coded polymer micro-vanes. Translates moving water streams directly into mechanical rotation torque along the primary drive line." };
+    waterwheelGroup.add(wheelHitbox);
+    selectableMeshes.push(wheelHitbox);
+
+    masterSystemGroup.add(waterwheelGroup);
+
+    // 5. TRANSLUCENT CATCHMENT BASIN CONTAINER
+    const basinBox = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.1, 1.2), plasticTranslucent);
+    basinBox.position.set(-0.2, -0.3, 0.2);
+    basinBox.userData = { name: "03 // Fluidic Catchment Manifold", desc: "Envelops the baseline assembly setup to manage discharge pooling containment and avoid structural spray erosion." };
+    selectableMeshes.push(basinBox);
+    masterSystemGroup.add(basinBox);
+
     scene.add(masterSystemGroup);
 
     // Modern Viewport Drag Control Engine
     let isMouseDown = false;
     let clickCoords = { x: 0, y: 0 };
-    let currentRotationVelocity = { x: 0.008, y: 0.005 };
 
     container.addEventListener('mousedown', (e) => {
         isMouseDown = true;
@@ -700,7 +683,6 @@
     window.addEventListener('mouseup', (e) => {
         isMouseDown = false;
         
-        // Raycast click detection logic if mouse did not drift significantly during drag execution
         const deltaX = Math.abs(e.clientX - clickCoords.x);
         const deltaY = Math.abs(e.clientY - clickCoords.y);
         
@@ -716,13 +698,18 @@
             const intersections = raycaster.intersectObjects(selectableMeshes);
             
             if (intersections.length > 0) {
-                const targetedComponent = intersections[0].object;
+                let targetedComponent = intersections[0].object;
                 hudTitle.innerText = targetedComponent.userData.name;
                 hudDesc.innerText = targetedComponent.userData.desc;
                 
-                // Add click pulse micro-animation effect
-                targetedComponent.scale.set(1.08, 1.08, 1.08);
-                setTimeout(() => targetedComponent.scale.set(1, 1, 1), 200);
+                // Pulsate structural visualization hook
+                if(targetedComponent.parent && targetedComponent.parent !== masterSystemGroup && targetedComponent.parent.parent === masterSystemGroup) {
+                    targetedComponent.parent.scale.set(1.08, 1.08, 1.08);
+                    setTimeout(() => targetedComponent.parent.scale.set(1, 1, 1), 250);
+                } else {
+                    targetedComponent.scale.set(1.04, 1.04, 1.04);
+                    setTimeout(() => targetedComponent.scale.set(1, 1, 1), 250);
+                }
             }
         }
     });
@@ -731,18 +718,17 @@
         if (!isMouseDown) return;
         const deltaMove = { x: e.clientX - clickCoords.x, y: e.clientY - clickCoords.y };
         
-        masterSystemGroup.rotation.y += deltaMove.x * 0.008;
-        masterSystemGroup.rotation.x += deltaMove.y * 0.008;
+        masterSystemGroup.rotation.y += deltaMove.x * 0.007;
+        masterSystemGroup.rotation.x += deltaMove.y * 0.007;
         
         clickCoords = { x: e.clientX, y: e.clientY };
     });
 
-    // Handle Display Scaling & Responsive Resizes
     window.triggerThreeRefresh = function() {
         if (!container.clientWidth) return;
-        camera.aspect = container.clientWidth / 400;
+        camera.aspect = container.clientWidth / 500;
         camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, 400);
+        renderer.setSize(container.clientWidth, 500);
     };
     window.addEventListener('resize', window.triggerThreeRefresh);
 
@@ -750,10 +736,12 @@
     function frameRenderLoop() {
         requestAnimationFrame(frameRenderLoop);
         
-        // Apply smooth idle rotation drift when user isn't actively interacting
+        // Kinematic Waterwheel continuous prototype movement simulation
+        capGroup.rotation.x += 0.02;
+
+        // Smooth systemic orientation idle drift
         if (!isMouseDown) {
-            masterSystemGroup.rotation.y += currentRotationVelocity.x;
-            masterSystemGroup.rotation.x = Math.sin(Date.now() * 0.0005) * 0.15; // Smooth dynamic elevation wave
+            masterSystemGroup.rotation.y += 0.003;
         }
         
         renderer.render(scene, camera);
