@@ -238,14 +238,6 @@
             border-radius: 4px;
         }
 
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-        }
-
         .image-caption {
             font-size: 0.8rem;
             margin-top: 12px;
@@ -254,36 +246,13 @@
             font-weight: bold;
         }
 
-        /* SDG Display Cards */
+        /* Cleaned SDG Display Cards */
         .sdg-block {
-            display: flex;
-            align-items: center;
-            margin: 25px 0;
+            margin: 15px 0;
             background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             padding: 15px;
-        }
-
-        .sdg-icon-wrapper {
-            width: 100px;
-            height: 100px;
-            flex-shrink: 0;
-            margin-right: 20px;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .sdg-icon-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .sdg-details {
-            flex-grow: 1;
         }
 
         .sdg-title {
@@ -292,7 +261,7 @@
             margin-bottom: 5px;
         }
 
-        .sdg-7-title { color: #d69e00; }
+        .sdg-7-title { color: #b48600; }
         .sdg-9-title { color: #e05300; }
         .sdg-11-title { color: #da7e00; }
 
@@ -330,8 +299,6 @@
         @media (max-width: 600px) {
             nav a { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
             h1 { font-size: 1.5rem; }
-            .sdg-block { flex-direction: column; align-items: center; text-align: center; }
-            .sdg-icon-wrapper { margin-right: 0; margin-bottom: 15px; }
         }
     </style>
 </head>
@@ -381,33 +348,18 @@
             <p>Our project addresses core international sustainability parameters:</p>
             
             <div class="sdg-block">
-                <div class="sdg-icon-wrapper">
-                    <div style="width:100%; height:100%; background:#d69e00; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; font-size:2rem;">7</div>
-                </div>
-                <div class="sdg-details">
-                    <div class="sdg-title sdg-7-title">SDG 7: Affordable and Clean Energy</div>
-                    <p>Providing off-grid, cost-free kinetic capture modules that generate electricity during weather blockades without consuming fossil fuels.</p>
-                </div>
+                <div class="sdg-title sdg-7-title">SDG 7: Affordable and Clean Energy</div>
+                <p>Providing off-grid, cost-free kinetic capture modules that generate electricity during weather blockades without consuming fossil fuels.</p>
             </div>
 
             <div class="sdg-block">
-                <div class="sdg-icon-wrapper">
-                    <div style="width:100%; height:100%; background:#e05300; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; font-size:2rem;">9</div>
-                </div>
-                <div class="sdg-details">
-                    <div class="sdg-title sdg-9-title">SDG 9: Industry, Innovation, and Infrastructure</div>
-                    <p>Constructing localized energy infrastructure resilient to environmental deterioration and extreme weather shocks.</p>
-                </div>
+                <div class="sdg-title sdg-9-title">SDG 9: Industry, Innovation, and Infrastructure</div>
+                <p>Constructing localized energy infrastructure resilient to environmental deterioration and extreme weather shocks.</p>
             </div>
 
             <div class="sdg-block">
-                <div class="sdg-icon-wrapper">
-                    <div style="width:100%; height:100%; background:#da7e00; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; font-size:2rem;">11</div>
-                </div>
-                <div class="sdg-details">
-                    <div class="sdg-title sdg-11-title">SDG 11: Sustainable Cities and Communities</div>
-                    <p>Empowering flood-prone vulnerable communities with decentralized survival mechanisms and distributed energy storage networks.</p>
-                </div>
+                <div class="sdg-title sdg-11-title">SDG 11: Sustainable Cities and Communities</div>
+                <p>Empowering flood-prone vulnerable communities with decentralized survival mechanisms and distributed energy storage networks.</p>
             </div>
         </div>
 
@@ -640,3 +592,4 @@
 </script>
 </body>
 </html>
+
